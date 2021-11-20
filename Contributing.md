@@ -1,8 +1,10 @@
 # Contributing to the Contraceptive Method Predictor project
 Contribution to the project is always welcomed, this document outlines the way in which one can propose changes / modifications to the  Contraceptive Method Predictor project.
+
 ## Fixing typos
 ### Grammatical errors/Typos:
 Grammatical errors or typos in documentation may be edited directly using the GitHub web interface, so long as the changes are made in the source file.
+
 ### Code modifications/changes:
 YES: you can suggest a modifications/ change by raising an issue 
 NO: you cannot edit the code directly
