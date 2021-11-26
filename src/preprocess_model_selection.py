@@ -7,7 +7,7 @@ Usage: Preprocessor.py --path=<path> --score_file=<score_file> [--model_path=<mo
 Options:
 --path=<path>               Path to read file from
 --score_file=<score_file>   Path (including filename) of where to locally save cross val score
---model_path=<model_path>   Path for the model pickle file [default: '../results/models/final_svc.pkl']
+--model_path=<model_path>   Path for the model pickle file [default: ../results/models/final_svc.pkl]
 """
 
 import os
