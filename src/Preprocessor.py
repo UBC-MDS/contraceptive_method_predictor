@@ -1,8 +1,8 @@
 # author: Abhiket Gaurav
 # date: 2021-11-25
 
-"""Reads data csv data from path and stores partitioned data to a local filepath as a csv.
-Usage: split_data.py --path=<path> --out_file=<out_file> 
+"""Reads train csv data from path preprocess the data and them build a Model on it and gives the cross validation output"
+Usage: Preprocessor.py --path=<path> --score_file=<score_file> --model_path=<model_path>
  
 Options:
 --path=<path>               Path to read file from 
@@ -16,21 +16,82 @@ from docopt import docopt
 import numpy as np
 import sys
 from sklearn.model_selection import train_test_split
+from sklearn.dummy import DummyClassifier, DummyRegressor
+
+from sklearn.pipeline import Pipeline, make_pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import (
+    OneHotEncoder,
+    OrdinalEncoder,
+    PolynomialFeatures,
+    StandardScaler,
+)
+
+from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.compose import ColumnTransformer, make_column_transformer
+from sklearn.dummy import DummyClassifier, DummyRegressor
+from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
+from sklearn.feature_extraction.text import CountVectorizer
+
+from sklearn.impute import SimpleImputer
+from sklearn.linear_model import LogisticRegression
+
+from sklearn.model_selection import (
+    GridSearchCV,
+    RandomizedSearchCV,
+    ShuffleSplit,
+    cross_val_score,
+    cross_validate,
+    train_test_split,
+)
+from sklearn.svm import SVC, SVR
+
 
 opt = docopt(__doc__)
 
 
-def main(path, out_file):
-    data = pd.read_csv(path, header=0, names=columns)
-    train_df, test_df = train_test_split(data, test_size=0.3, random_state=123) 
+def main(path, out_file, model_path):
+    train_df = pd.read_csv(path)
+    
+    X_train, y_train = train_df.drop(columns=["Contraceptive_method_used"]), train_df["Contraceptive_method_used"]
+
+    #Converting it to a binary model(train set)
+    y_train = y_train.replace(1,0)
+    y_train = y_train.replace([2,3],1)
+
+    numeric_features = ['Wife_age', 'Number_of_children_ever_born']
+    ordinal_features = ["Wife_education","Husband_education","Husband_occupation", "Standard_of_living_index"]
+    passthrough_features = ['Wife_religion','Wife_now_working?','Media_exposure'] 
+
+
+    preprocessor = make_column_transformer(
+        (make_pipeline(SimpleImputer(), StandardScaler()),numeric_features,),
+        (OrdinalEncoder(),ordinal_features,),  
+        ("passthrough", passthrough_features),)
+    
+    models_bal = {
+    "decision tree": DecisionTreeClassifier(random_state=123),
+    "kNN": KNeighborsClassifier(),
+    "Logistic Regression": LogisticRegression(max_iter=100, multi_class='ovr',random_state=123 ),
+    "RBF SVM": SVC(random_state=123),}
+    
+    results_bal = {}
+    results_bal_f = {}
+
+    for keys, value in models_bal.items():
+        pipe_bal = make_pipeline(preprocessor, value)
+        results_bal[keys] = cross_validate(pipe_bal, X_train, y_train, cv = 5, return_train_score = True)
+        results_bal_f[keys] = pd.DataFrame(results_bal[keys]).mean()
+    
     try:
-        train_df.to_csv(out_file+"train.csv", index=False)
-        test_df.to_csv(out_file+"test.csv", index=False)
+        pd.DataFrame(results_bal_f).to_csv(out_file)
     except:
         os.makedirs(os.path.dirname(out_file))
-        train_df.to_csv(out_file+"train.csv", index=False)
-        test_df.to_csv(out_file+"test.csv", index=False)
+        pd.DataFrame(results_bal_f).to_csv(out_file)
 
+# if __name__ == "__main__":
+#     main(opt["--path"], opt["--score_file"],opt["--model_path"])
 
 if __name__ == "__main__":
     main(opt["--path"], opt["--out_file"])
