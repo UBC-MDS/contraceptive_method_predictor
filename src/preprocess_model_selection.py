@@ -1,4 +1,4 @@
-# author: Abhiket Gaurav
+# author: Abhiket Gaurav, Christopher Alexander
 # date: 2021-11-25
 
 """Reads train csv data from path, preprocess the data, build a Model, gives the cross validation output"
@@ -50,6 +50,28 @@ from sklearn.svm import SVC, SVR
 
 opt = docopt(__doc__)
 
+def make_preprocessor(numeric_features, ordinal_features, passthrough_features):
+    preprocessor = make_column_transformer(
+        (make_pipeline(SimpleImputer(), StandardScaler()),numeric_features,),
+        (OrdinalEncoder(),ordinal_features,),  
+        ("passthrough", passthrough_features),)
+    return preprocessor
+
+def cross_val_multiple_models(preprocessor, X_train, y_train):
+    models_bal = {
+        "decision tree": DecisionTreeClassifier(random_state=123),
+        "kNN": KNeighborsClassifier(),
+        "Logistic Regression": LogisticRegression(max_iter=100, multi_class='ovr',random_state=123 ),
+        "RBF SVM": SVC(random_state=123),}
+    #Cross val-score
+    results_bal = {}
+    results_bal_f = {}
+    for keys, value in models_bal.items():
+        pipe_bal = make_pipeline(preprocessor, value)
+        results_bal[keys] = cross_validate(pipe_bal, X_train, y_train, cv = 5, return_train_score = True)
+        results_bal_f[keys] = pd.DataFrame(results_bal[keys]).mean()
+    return results_bal_f
+    
 
 def main(path, out_file, model_path):
     # Reading the data
@@ -67,26 +89,9 @@ def main(path, out_file, model_path):
     ordinal_features = ["Wife_education","Husband_education","Husband_occupation", "Standard_of_living_index"]
     passthrough_features = ['Wife_religion','Wife_now_working?','Media_exposure'] 
 
-    preprocessor = make_column_transformer(
-        (make_pipeline(SimpleImputer(), StandardScaler()),numeric_features,),
-        (OrdinalEncoder(),ordinal_features,),  
-        ("passthrough", passthrough_features),)
-
-    # Building the Model
-    models_bal = {
-        "decision tree": DecisionTreeClassifier(random_state=123),
-        "kNN": KNeighborsClassifier(),
-        "Logistic Regression": LogisticRegression(max_iter=100, multi_class='ovr',random_state=123 ),
-        "RBF SVM": SVC(random_state=123),}
-    
-    #Cross val-score
-    results_bal = {}
-    results_bal_f = {}
-    for keys, value in models_bal.items():
-        pipe_bal = make_pipeline(preprocessor, value)
-        results_bal[keys] = cross_validate(pipe_bal, X_train, y_train, cv = 5, return_train_score = True)
-        results_bal_f[keys] = pd.DataFrame(results_bal[keys]).mean()
+    preprocessor = make_preprocessor(numeric_features, ordinal_features, passthrough_features)
         
+    results_bal_f = cross_val_multiple_models(preprocessor, X_train, y_train)
     # Output: saving the cross val score in a CSV file
     
     try:
