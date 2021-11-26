@@ -2,12 +2,12 @@
 # date: 2021-11-25
 
 """Reads train csv data from path, preprocess the data, build a Model, gives the cross validation output"
-Usage: Preprocessor.py --path=<path> --score_file=<score_file> --model_path=<model_path>
+Usage: Preprocessor.py --path=<path> --score_file=<score_file> [--model_path=<model_path>]
  
 Options:
 --path=<path>               Path to read file from
 --score_file=<score_file>   Path (including filename) of where to locally save cross val score
---model_path=<model_path>   Path for the model pickle file
+--model_path=<model_path>   Path for the model pickle file [default: '../results/models/final_svc.pkl']
 """
 
 import os
@@ -46,6 +46,7 @@ from sklearn.model_selection import (
     train_test_split,
 )
 from sklearn.svm import SVC, SVR
+import pickle
 
 
 opt = docopt(__doc__)
@@ -72,6 +73,30 @@ def cross_val_multiple_models(preprocessor, X_train, y_train):
         results_bal_f[keys] = pd.DataFrame(results_bal[keys]).mean()
     return results_bal_f
     
+def hyperparameter_tuning(preprocessor, X_train, y_train):
+    param = {
+    "svc__class_weight": [None,"balanced"],
+    "svc__gamma": np.logspace(-3, 0, 4),
+    "svc__C": np.logspace(-2, 3, 6)
+    } 
+    pipe = make_pipeline(preprocessor, SVC(random_state=123))
+    random_search = RandomizedSearchCV(pipe, param, n_iter=200, verbose=1, n_jobs=-1, random_state=123)
+    random_search.fit(X_train, y_train)
+    cv_results_df = pd.DataFrame(random_search.cv_results_)[
+    [
+        "rank_test_score",
+        "mean_test_score",
+        "param_svc__gamma",
+        "param_svc__C",
+        "param_svc__class_weight",
+        "mean_fit_time",
+    ]].set_index("rank_test_score").sort_index().T
+    print("Best hyperparameter values: ", random_search.best_params_)
+    print("Best score: %0.3f" % (random_search.best_score_))
+    return random_search.best_estimator_,random_search.best_params_
+    
+
+
 
 def main(path, out_file, model_path):
     # Reading the data
@@ -99,6 +124,21 @@ def main(path, out_file, model_path):
     except:
         os.makedirs(os.path.dirname(out_file))
         pd.DataFrame(results_bal_f).to_csv(out_file)
+
+    # Model Tuning 
+    # SVC was decided to be the best model for this scenario
+    best_model, best_params = hyperparameter_tuning(preprocessor, X_train, y_train)
+
+    try:
+        pickle.dump(best_model, open(str(model_path),"wb"))
+        pickle.dump(best_params, open(str(os.path.dirname(out_file))+"/final_params.pkl","wb"))
+    except:
+        os.makedirs(os.path.dirname(model_path))
+        directory = os.path.dirname(model_path)
+        pickle.dump(best_model, open(model_path,"wb"))
+        pickle.dump(best_params, open(str(directory)+"/final_params.pkl","wb"))
+
+    
 
 if __name__ == "__main__":
     main(opt["--path"], opt["--score_file"],opt["--model_path"])
