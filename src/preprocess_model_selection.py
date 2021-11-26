@@ -79,7 +79,7 @@ def hyperparameter_tuning(preprocessor, X_train, y_train):
     "svc__gamma": np.logspace(-3, 0, 4),
     "svc__C": np.logspace(-2, 3, 6)
     } 
-    pipe = make_pipeline(preprocessor, SVC(random_state=123))
+    pipe = make_pipeline(preprocessor, SVC(probability= True, random_state=123))
     random_search = RandomizedSearchCV(pipe, param, n_iter=200, verbose=1, n_jobs=-1, random_state=123)
     random_search.fit(X_train, y_train)
     cv_results_df = pd.DataFrame(random_search.cv_results_)[
