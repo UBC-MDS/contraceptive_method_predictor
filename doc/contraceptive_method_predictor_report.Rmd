@@ -1,0 +1,46 @@
+---
+title: "Contraceptive Method Predictor Report"
+author: "Group 15 - Christopher Alexander, Yik Hong Chan, Abhiket Gaurav, Valli A"
+date: "11/26/2021 (updated: `r Sys.Date()`)""
+always_allow_html: true
+output: 
+  html_document:
+    toc: true
+bibliography: 
+  cmp_refs.bib
+---
+
+```{r setup_r, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(knitr)
+library(kableExtra)
+library(tidyverse)
+```
+
+```{python setup_py, include=FALSE}
+import pandas as pd
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r summary, child="01_Summary.Rmd"}
+```
+
+```{r intro, child="02_Intro.Rmd"}
+```
+
+```{r data, child="03_Data.Rmd"}
+```
+
+```{r eda, child="04_EDA.Rmd"}
+```
+
+```{r method, child ="05_Method.Rmd"}
+```
+
+```{r result, child="06_Results.Rmd"}
+```
+
+# References
