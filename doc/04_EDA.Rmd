@@ -1,7 +1,7 @@
 # EDA
 
 ## Summary of the train data
-We performed the exploratory data analysis on the train data. There are no missing values in the dataset. Below is the attribute information.
+We performed the exploratory data analysis on the train data. There are no missing values in the train dataset. Below is the attribute information.
 
 | Column name                  | Description                                  | Type       | Values                              |
 | ---------------------------- | ------------------------------------------- | ----------- |  ---------------------------------- |
