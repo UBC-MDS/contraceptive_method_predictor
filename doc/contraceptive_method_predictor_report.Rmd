@@ -12,13 +12,6 @@ bibliography:
   cmp_refs.bib
 ---
 
-```{r setup_r, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(knitr)
-library(kableExtra)
-library(tidyverse)
-```
-
 ```{python setup_py, include=FALSE}
 import pandas as pd
 ```

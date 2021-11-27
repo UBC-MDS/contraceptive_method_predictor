@@ -1,3 +1,5 @@
 # Acknowledgment
 
-The R and Python programming languages (R Core Team 2019; Van Rossum and Drake 2009) and the following R and Python packages were used to perform the analysis: caret (Jed Wing et al. 2019), docopt (de Jonge 2018), feather (Wickham 2019), knitr (Xie 2014), tidyverse (Wickham 2017), docopt (Keleshev 2014), os (Van Rossum and Drake 2009), feather (McKinney 2019) Pandas (McKinney 2010). The code used to perform the analysis and create this report can be found [here](https://github.com/UBC-MDS/contraceptive_method_predictor/tree/main/src).
+This dataset is a subset of the 1987 National Indonesia Contraceptive Prevalence Survey [@lls-cpacttt-00]. It was sourced from the UCI Machine Learning Repository [@Dua:2019].
+
+The Python programming languages [@van1995python] and the following Python packages were used to perform the analysis: altair [@vanderplas2018altair], docopt [@docopt], matplotlib [@hunter2007matplotlib], numpy [@2020NumPy-Array], pandas [@mckinney2010data], sckit-learn [@pedregosa2011scikit]. The code used to perform the analysis and create this report can be found [here](https://github.com/UBC-MDS/contraceptive_method_predictor/tree/main/src).
