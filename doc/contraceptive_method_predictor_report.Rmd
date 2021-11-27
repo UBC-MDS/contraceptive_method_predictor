@@ -1,6 +1,6 @@
 ---
 title: "Contraceptive Method Predictor Report"
-author: "Group 15 - Christopher Alexander, Yik Hong Chan, Abhiket Gaurav, Valli A"
+author: "Christopher Alexander, Yik Hong Chan, Abhiket Gaurav, Valli A"
 date: "11/26/2021 (updated: `r Sys.Date()`)"
 always_allow_html: true
 output: 
