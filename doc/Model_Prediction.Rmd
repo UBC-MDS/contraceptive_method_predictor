@@ -1,0 +1,45 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+# Model Testing
+After finding out the best parameters by optimizing the accuracy score, we tried the model on the test data set.In Total there were 442 Observations in the test split. 
+
+a) 0=No Use = 184
+b) 1=Use = 258
+
+## Confusion Matrix:
+
+We will study the confusion matrix to understand the model's predictive power\@ref(fig:confusionmat):
+
+```{r confusionmat, echo=FALSE, fig.cap="Confusion Matrix (Actual vs Predicted)", out.width = '50%'}
+conf <- read.csv("../results/confusion_matrix.csv") 
+knitr::kable(conf, "pipe")
+```
+
+## Scoring Metric:
+
+We also looked at the recall, precision and the f1-score \@ref(fig:scoringmet)::
+
+```{r scoringmet, echo=FALSE, fig.cap="Scoring Metrics", out.width = '50%'}
+scr <- read.csv("../results/classification_report.csv") 
+knitr::kable(scr, "pipe")
+```
+
+
+## Precision-Recall Curve:
+
+Figure \@ref(fig:precrec)
+
+```{r precrec, echo=FALSE, fig.cap="Precision vs Recall Curve", out.width = '50%'}
+knitr::include_graphics("../results/pr_curve.png")
+```
+
+
+## ROC Curve
+
+Figure \@ref(fig:roccurve)
+```{r roccurve, echo=FALSE, fig.cap="AUC ROC Curve", out.width = '100%'}
+knitr::include_graphics("../results/roc_curve.png")
+```

@@ -5,7 +5,7 @@ output:
 ---
 # Pre-Processing & Model Selection 
 
-### Data Pre-Processing
+## Data Pre-Processing
 From the EDA(Exploratory Data Analysis) and the variable description we found that there were no missing value. However, the variables were of different data type.
 
 
@@ -31,7 +31,7 @@ So now we have  0=No-use : 445 observations, 1=use : 586 observations. Now, it i
 3. Logistic Regression
 4. RBF SVC
 
-### Results of Cross Validation
+## Results of Cross Validation
 From the Figure \@ref(fig:crossVal) It can be clearly seen than the RBF SVC is giving us the best score on both train and cross val dataset.
 
 ```{r crossVal, echo=FALSE, fig.cap="Cross Validation Result (Score for Accuracy)", out.width = '50%'}
