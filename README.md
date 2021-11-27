@@ -13,11 +13,11 @@ The data set used in this project is a subset of the 1987 National Indonesia Con
 
 To answer the predictive question posted above , we plan to build a predictive classification model. Before model building we will partition the data into training and test (70%:30%) and perform exploratory data analysis to understand various questions such as class imbalance, correlation, distribution of variables,etc. We will also find initial patterns we observe from the data which can help us in the model building process.
 
-Given there are a mix of continuous and categorical variables, and the outcome is a multi-class problem. We will start our approach by choosing a non linear model such as DecisionTree as our baseline as it handles mutli-class problems efficiently. Saying which for the initial stage of the project we cannot fix on a particular model until we try out different algorithms, other feature engineering steps required and hyper-parameter optimization. The levels of our target i.e `choice of contraceptive method` have been categorized into : 1=No-use, 2=Long-term, 3=Short-term. We will use F1 score as our evaluation metric as we want to give equal importance to all levels in the target.
+Given there are not enough samples for short term use and long term use of contraceptives, we would approach this problem as a binary classification problem. The levels of our target i.e `choice of contraceptive method` have been categorized into: 0=No Use, 1=Use of contraceptives. We will use accuracy and recall score as our evaluation metric as we have categorized the target into 2 labels.
 
-After selecting our final model, we will refit the model on the complete training data set, and evaluate its performance on unseen test data set. An overall performance of the model with mis-classificaton errors will be presented in the form of a classification report.
+After selecting our final model, we will refit the model on the complete training data set, and evaluate its performance on unseen test data set. An overall performance of the model with mis-classification errors will be presented in the form of a classification report.
 
-An initial exploratory data analysis performed as a part of the release v0.0.1 can be found [here](https://github.com/UBC-MDS/contraceptive_method_predictor/blob/main/src/eda.ipynb)
+An initial exploratory data analysis performed as a part of the release v0.0.1 can be found [here](https://github.com/UBC-MDS/contraceptive_method_predictor/blob/main/src/eda.ipynb).
 
 ## Data Analysis Workflow
 
@@ -36,6 +36,8 @@ In this project, we created 6 scripts to run our data analysis. As illustrated i
 
 To replicate the analysis, clone this GitHub repository, install the dependencies listed below, and run the following command at the command line / terminal from the root directory of this project:
 
+    conda env create -f env-cmp.yaml
+    conda activate cmp
     python src/download_data.py --url=https://archive.ics.uci.edu/ml/machine-learning-databases/cmc/cmc.data --out_file=data/raw/contraceptive.csv
 
 
@@ -54,13 +56,7 @@ At this initial stage we have done an EDA of the dataset and have found that
 
 ## Dependencies
 
--   Python 3.7.3 and Python packages:
-
-    -   docopt==0.6.2
-    -   pandas==1.3.4
-    -   altair==4.1.0
-    -   numpy==1.21.4
-    -   scikit-learn==1.0.1
+We use Python 3.7.3 and Python packages for analysis. For details, please refer to `env-cmp.yaml`.
 
 ## License
 
