@@ -81,7 +81,7 @@ def main(test_path,model, output_path):
     y_test = y_test.replace(1,0)
     y_test = y_test.replace([2,3],1)
 
-    final_svc_model = pickle.load(open("/Users/valliakella/Documents/UBC/522Project/contraceptive_method_predictor/results/models/final_svc.pkl", "rb"))
+    final_svc_model = pickle.load(open(model, "rb"))
 
     #Predictions on the test data
     y_pred = final_svc_model.predict(X_test)

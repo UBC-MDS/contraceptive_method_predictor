@@ -1,0 +1,51 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+# Pre-Processing & Model Selection 
+
+## Data Pre-Processing
+From the EDA(Exploratory Data Analysis) and the variable description we found that there were no missing value. However, the variables were of different data type.
+
+
+| Data Type                  | Variables                                      | Transformation | Technique           |
+| -------------------------- | ---------------------------------------------- | -------------- |  -------------------|
+| Numerical                  | Wife's age,   Number of children ever born     | Scaling        | Standard Scaling    |
+| Ordinal                    | Wife's education, Husband Education,           | Encoding       | Ordinal Encoding    |
+|                            | Husband's Occupation,Standard of living Index  |                |                     |
+| Binary                     | Wife's religion, Wife working Media Exposure   | None           | Pass through        |
+
+
+# Finding the best Model:
+
+The target variable,( Contraceptive method used ), has three values:
+
+1=No-use, 2=Long-term, 3=Short-term
+
+During the EDA we found that there was a class imbalance problem. Hence, we combined 2=Long-term, 3=Short-term into one class and it was given a value of 1.  1=No-use was given a value of 0.
+So now we have  0=No-use : 445 observations, 1=use : 586 observations. Now, it is binary classification problem. The model we tried:
+
+1. Decision Tree
+2. kNN
+3. Logistic Regression
+4. RBF SVC
+
+## Results of Cross Validation
+From the Figure \@ref(fig:crossVal) It can be clearly seen than the RBF SVC is giving us the best score on both train and cross val dataset.
+
+```{r crossVal, echo=FALSE, fig.cap="Cross Validation Result (Score for Accuracy)", out.width = '50%'}
+cross_val <- read.csv("../results/val_score_results.csv") 
+knitr::kable(cross_val, "pipe")
+```
+
+
+## Hyper-Parameter Optimization
+Since the performance of RBF SVC was the best we took it further for hyper-parameter tuning \@ref(fig:hyperparam). We found that the best parameters are:
+C= 10.0
+gamma = 0.01
+
+```{r hyperparam, echo=FALSE, fig.cap="Hyperparameter Selection", out.width = '100%'}
+hyperparameter <- read.csv("../results/val_score_results.csv") 
+knitr::kable(hyperparameter, "pipe")
+```
