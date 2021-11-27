@@ -2,7 +2,7 @@
 # date: 2021-11-25
 
 """Reads train csv data from path, preprocess the data, build a Model, gives the cross validation output"
-Usage: Preprocessor.py --path=<path> --score_file=<score_file> [--model_path=<model_path>]
+Usage: preprocess_model_selection.py --path=<path> --score_file=<score_file> [--model_path=<model_path>]
  
 Options:
 --path=<path>               Path to read file from
