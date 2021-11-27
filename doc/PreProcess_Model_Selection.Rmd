@@ -5,7 +5,7 @@ output:
 ---
 # Pre-Processing & Model Selection 
 
-### Data Pre-Processing
+## Data Pre-Processing
 From the EDA(Exploratory Data Analysis) and the variable description we found that there were no missing value. However, the variables were of different data type.
 
 
@@ -31,7 +31,7 @@ So now we have  0=No-use : 445 observations, 1=use : 586 observations. Now, it i
 3. Logistic Regression
 4. RBF SVC
 
-### Results of Cross Validation
+## Results of Cross Validation
 From the Figure \@ref(fig:crossVal) It can be clearly seen than the RBF SVC is giving us the best score on both train and cross val dataset.
 
 ```{r crossVal, echo=FALSE, fig.cap="Cross Validation Result (Score for Accuracy)", out.width = '50%'}
@@ -41,13 +41,11 @@ knitr::kable(cross_val, "pipe")
 
 
 ## Hyper-Parameter Optimization
-Since the performance of RBF SVC was the best we took it further \@ref(fig:countCat), the survey captured the majority of the observation from women with high levels of education, religious belief, educated partners and living at a high standard of living. 
-```{r countCat, echo=FALSE, fig.cap="Histogram of all non-numeric features", out.width = '100%'}
-knitr::include_graphics("../results/histogram_categorical.png")
-```
+Since the performance of RBF SVC was the best we took it further for hyper-parameter tuning \@ref(fig:hyperparam). We found that the best parameters are:
+C= 10.0
+gamma = 0.01
 
-It is found that most of the observation by target class 1 (no contraception) lies on certain categorical variables from the figure \@ref(fig:countCatByTarget). But since there is class imbalance problem, we cannot imply that they are correlated.
-
-```{r countCatByTarget, echo=FALSE, fig.cap="Counting Combinations of all categorical features by the target class", out.width = '100%'}
-knitr::include_graphics("../results/counts_categorical_by_target.png")
+```{r hyperparam, echo=FALSE, fig.cap="Hyperparameter Selection", out.width = '100%'}
+hyperparameter <- read.csv("../results/val_score_results.csv") 
+knitr::kable(hyperparameter, "pipe")
 ```
