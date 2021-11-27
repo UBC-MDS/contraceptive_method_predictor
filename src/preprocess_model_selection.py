@@ -2,7 +2,7 @@
 # date: 2021-11-25
 
 """Reads train csv data from path, preprocess the data, build a Model, gives the cross validation output"
-Usage: Preprocessor.py --path=<path> --score_file=<score_file> [--model_path=<model_path>]
+Usage: preprocess_model_selection.py --path=<path> --score_file=<score_file> [--model_path=<model_path>]
  
 Options:
 --path=<path>               Path to read file from
@@ -52,6 +52,28 @@ import pickle
 opt = docopt(__doc__)
 
 def make_preprocessor(numeric_features, ordinal_features, passthrough_features):
+    """
+    Creates and returns a preprocessor column transformer.
+    Makes a column transformer of standard scaler, OHE and passthrough.
+
+    Parameters
+    ----------
+    numeric_features : list
+        Column names of numeric features 
+    ordinal_features : list
+        Column names of ordinal features
+    passthrough_features : list
+        Column names of features which does not require preprocessing
+
+    Returns
+    -------
+    preprocessor
+        A column transformer object with specific transformations for each set of columns.
+
+    Examples
+    --------
+    >>> make_preprocessor(['Wife_age'], ["Wife_education","Husband_education"], ["Wife_religion"])
+    """
     preprocessor = make_column_transformer(
         (make_pipeline(SimpleImputer(), StandardScaler()),numeric_features,),
         (OrdinalEncoder(),ordinal_features,),  
@@ -59,6 +81,27 @@ def make_preprocessor(numeric_features, ordinal_features, passthrough_features):
     return preprocessor
 
 def cross_val_multiple_models(preprocessor, X_train, y_train):
+    """
+    Performs cross validate on multiple models and creats a result dataframe
+
+    Parameters
+    ----------
+    preprocessor : make_column transformer object
+        The column transformer object to be added to pipeline
+    X_train : dataframe
+        Dataset to train on 
+    y_train : Pandas series
+        Target values to train on
+
+    Returns
+    -------
+    results_bal_f
+        Returns a dataframe with cross validation scores
+
+    Examples
+    --------
+    >>> cross_val_multiple_models(preprocessor, X_train, y_train)
+    """
     models_bal = {
         "decision tree": DecisionTreeClassifier(random_state=123),
         "kNN": KNeighborsClassifier(),
@@ -74,6 +117,31 @@ def cross_val_multiple_models(preprocessor, X_train, y_train):
     return results_bal_f
     
 def hyperparameter_tuning(preprocessor, X_train, y_train):
+    """
+    Performs hyperparameter tuning and returns best model and parameters
+    Saves RandomSearchCV results in CSV.
+
+    Parameters
+    ----------
+    preprocessor : make_column transformer object
+        The column transformer object to be added to pipeline 
+    X_train : dataframe
+        Dataset to train on 
+    y_train : Pandas series
+        Target values to train on
+
+    Returns
+    -------
+    random_search.best_estimator_
+        Returns the best estimator after RandomSearchCV. 
+    
+    random_search.best_params_
+        Returns the best params in a dictionary.
+
+    Examples
+    --------
+    >>> hyperparameter_tuning(preprocessor, X_train, y_train)
+    """
     param = {
     "svc__class_weight": [None,"balanced"],
     "svc__gamma": np.logspace(-3, 0, 4),
@@ -91,9 +159,10 @@ def hyperparameter_tuning(preprocessor, X_train, y_train):
         "param_svc__class_weight",
         "mean_fit_time",
     ]].set_index("rank_test_score").sort_index().T
+    top5_models_df = cv_results_df.iloc[:,:5]
     print("Best hyperparameter values: ", random_search.best_params_)
     print("Best score: %0.3f" % (random_search.best_score_))
-    return random_search.best_estimator_,random_search.best_params_
+    return random_search.best_estimator_, random_search.best_params_, top5_models_df
     
 
 
@@ -127,16 +196,18 @@ def main(path, out_file, model_path):
 
     # Model Tuning 
     # SVC was decided to be the best model for this scenario
-    best_model, best_params = hyperparameter_tuning(preprocessor, X_train, y_train)
+    best_model, best_params, rcv_results = hyperparameter_tuning(preprocessor, X_train, y_train)
 
     try:
         pickle.dump(best_model, open(str(model_path),"wb"))
         pickle.dump(best_params, open(str(os.path.dirname(out_file))+"/final_params.pkl","wb"))
+        rcv_results.to_csv(str(os.path.dirname(out_file))+"/Random_Search_results.csv")
     except:
         os.makedirs(os.path.dirname(model_path))
         directory = os.path.dirname(model_path)
         pickle.dump(best_model, open(model_path,"wb"))
         pickle.dump(best_params, open(str(directory)+"/final_params.pkl","wb"))
+        rcv_results.to_csv(str(os.path.dirname(out_file))+"/Random_Search_results.csv")
 
     
 
