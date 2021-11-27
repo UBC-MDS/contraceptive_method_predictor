@@ -1,5 +1,5 @@
 # author: Harry Chan
-# date: 20121-11-24
+# date: 2021-11-24
 
 """Create eda plots for the provided training data file. Saves the plots as png files in the provided output directory.
 Usage: src/eda.py --train_dir=<train_dir> --out_dir=<out_dir>
