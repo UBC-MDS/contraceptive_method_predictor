@@ -1,7 +1,7 @@
 ---
 title: "Contraceptive Method Predictor Report"
 author: "Christopher Alexander, Yik Hong Chan, Abhiket Gaurav, Valli A"
-date: "11/26/2021 (updated: `r Sys.Date()`)"
+date: "2021-11-26 (updated: `r Sys.Date()`)"
 always_allow_html: true
 output: 
   bookdown::html_document2:
@@ -11,13 +11,6 @@ output:
 bibliography: 
   cmp_refs.bib
 ---
-
-```{r setup_r, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(knitr)
-library(kableExtra)
-library(tidyverse)
-```
 
 ```{python setup_py, include=FALSE}
 import pandas as pd
@@ -39,6 +32,9 @@ import pandas as pd
 ```
 
 ```{r result, child="06_Results.Rmd"}
+```
+
+```{r acknowledgement, child="07_Acknowledgment.Rmd"}
 ```
 
 # References

@@ -36,19 +36,27 @@ In this project, we created 6 scripts to run our data analysis. As illustrated i
 
 To replicate the analysis, clone this GitHub repository, install the dependencies listed below, and run the following command at the command line / terminal from the root directory of this project:
 
-    conda env create -f env-cmp.yaml
+    # for first time installation
+    conda env create -f env-cmp.yaml 
+    # activate virtual environment
     conda activate cmp
+    # download data
     python src/download_data.py --url=https://archive.ics.uci.edu/ml/machine-learning-databases/cmc/cmc.data --out_file=data/raw/contraceptive.csv
-
-
+    # create EDA figure and write to file
     python src/eda.py --train_dir=data/processed/train.csv --out_dir=./results
+    # pre-process data and train model
+    python preprocess_model_selection.py --path="../data/processed/train.csv" --score_file="../results/val_score_results.csv"
+    # test model
+    python predict.py --test_path="../data/processed/test.csv" --model="../results/models/final_svc.pkl" --output_path="../results/"
+    # render final report
+    Rscript -e "rmarkdown::render('doc/contraceptive_method_predictor_report.Rmd', output_format = 'github_document')"
 
 ## Initial EDA
 
 At this initial stage we have done an EDA of the dataset and have found that
 
 -   Majority of the women(\~43% in the given dataset) are not using any contraceptive method
--   Majority of the observations are of the 'wife age' between 22-36years
+-   Majority of the observations are of the 'wife age' between 22-36 years old
 -   Most of them have 2-3 children
 -   Women have high level of education, Husbands too have high level of education.
 -   Most of women are not working
