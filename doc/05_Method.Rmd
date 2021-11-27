@@ -3,6 +3,12 @@ output:
   html_document: default
   pdf_document: default
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(knitr)
+```
+
 # Pre-Processing & Model Selection 
 
 ## Data Pre-Processing
@@ -32,20 +38,20 @@ So now we have  0=No-use : 445 observations, 1=use : 586 observations. Now, it i
 4. RBF SVC
 
 ## Results of Cross Validation
-From the Figure \@ref(fig:crossVal) It can be clearly seen than the RBF SVC is giving us the best score on both train and cross val dataset.
+From the Figure \@ref(tab:crossVal) It can be clearly seen than the RBF SVC is giving us the best score on both train and cross val dataset.
 
-```{r crossVal, echo=FALSE, fig.cap="Cross Validation Result (Score for Accuracy)", out.width = '50%'}
+```{r crossVal, echo=FALSE }
 cross_val <- read.csv("../results/val_score_results.csv") 
-knitr::kable(cross_val, "pipe")
+kable(cross_val, caption="Cross Validation Result (Score for Accuracy)")
 ```
 
 
 ## Hyper-Parameter Optimization
-Since the performance of RBF SVC was the best we took it further for hyper-parameter tuning \@ref(fig:hyperparam). We found that the best parameters are:
+Since the performance of RBF SVC was the best we took it further for hyper-parameter tuning \@ref(tab:hyperparam). We found that the best parameters are:
 C= 10.0
 gamma = 0.01
 
-```{r hyperparam, echo=FALSE, fig.cap="Hyperparameter Selection", out.width = '100%'}
+```{r hyperparam, echo=FALSE}
 hyperparameter <- read.csv("../results/Random_Search_results.csv") 
-knitr::kable(hyperparameter, "pipe")
+kable(hyperparameter, caption="Hyperparameter Selection")
 ```

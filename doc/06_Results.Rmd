@@ -19,6 +19,8 @@ knitr::include_graphics("../results/cm.png")
 
 ```
 
+Look at the confusion matrix we can see that model is predicting well, the accuracy is 0.74. However, there are also some false -ve and false +ve error that is coming, so there are still some scope of improvement.
+
 ## Scoring Metric:
 
 We also looked at the recall, precision and the f1-score \@ref(fig:scoringmet)::
@@ -46,5 +48,8 @@ knitr::include_graphics("../results/roc_curve.png")
 
 ## Final Conclusion
 
-The model is performing well with an accuracy of $0.74$ and recall of $0.9$, precision of $0.73$ and f1_score of $0.8$. This is in line with our training model.The very high recall shows that there are less number of false negatives.
+
+We have tried 4 different models, the intent was to predict the use of contraceptive based on socio-economic and eduction level. As we can see from the above parameters, The model is performing well with an accuracy of $0.74$ and recall of $0.9$, precision of $0.73$ and f1_score of $0.8$ and AUC $78%$. This is in line with our training model.The very high recall shows that there are less number of false negatives.
+
+Nevertheless, there are still cases where the model is not predicting correctly, and hence there is scope of improvement, before we deploy it in a real world scenario.
 
