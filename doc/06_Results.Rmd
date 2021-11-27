@@ -14,8 +14,9 @@ b) 1=Use = 258
 We will study the confusion matrix to understand the model's predictive power\@ref(fig:confusionmat):
 
 ```{r confusionmat, echo=FALSE, fig.cap="Confusion Matrix (Actual vs Predicted)", out.width = '50%'}
-conf <- read.csv("../results/confusion_matrix.csv") 
-knitr::kable(conf, "pipe")
+
+knitr::include_graphics("../results/cm.png")
+
 ```
 
 ## Scoring Metric:
@@ -23,8 +24,7 @@ knitr::kable(conf, "pipe")
 We also looked at the recall, precision and the f1-score \@ref(fig:scoringmet)::
 
 ```{r scoringmet, echo=FALSE, fig.cap="Scoring Metrics", out.width = '50%'}
-scr <- read.csv("../results/classification_report.csv") 
-knitr::kable(scr, "pipe")
+knitr::include_graphics("../results/cl_report.png")
 ```
 
 
@@ -43,3 +43,8 @@ Figure \@ref(fig:roccurve)
 ```{r roccurve, echo=FALSE, fig.cap="AUC ROC Curve", out.width = '100%'}
 knitr::include_graphics("../results/roc_curve.png")
 ```
+
+## Final Conclusion
+
+The model is performing well with an accuracy of $0.74$ and recall of $0.9$, precision of $0.73$ and f1_score of $0.8$. This is in line with our training model.The very high recall shows that there are less number of false negatives.
+
