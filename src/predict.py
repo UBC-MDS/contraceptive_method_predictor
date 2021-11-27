@@ -37,6 +37,21 @@ import pickle
 opt = docopt(__doc__)
 
 def plot_ROC_curve(y_true, y_pred):
+    """
+    Parameters
+    ---------
+    model :
+        scikit-learn model
+    y_true: numpy array or a Dataframe column
+            The values for y in the test set
+    y_pred: numpy array 
+            The values predicted for y by the model
+
+    Returns
+    --------
+    returns the roc plot for the given data
+    """
+
     label="SVC: ROC Curve",
     marker_colour="r",
     marker_label="SVC default threshold",
