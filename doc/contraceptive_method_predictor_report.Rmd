@@ -23,6 +23,9 @@ library(tidyverse)
 import pandas as pd
 ```
 
+```{r summary, child="01_Summary.Rmd"}
+```
+
 ```{r intro, child="02_Intro.Rmd"}
 ```
 
@@ -30,6 +33,15 @@ import pandas as pd
 ```
 
 ```{r eda, child="04_EDA.Rmd"}
+```
+
+```{r method, child ="05_Method.Rmd"}
+```
+
+```{r result, child="06_Results.Rmd"}
+```
+
+```{r acknowledgement, child="07_Acknowledgment.Rmd"}
 ```
 
 # References

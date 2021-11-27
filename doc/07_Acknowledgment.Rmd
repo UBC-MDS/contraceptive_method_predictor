@@ -1,0 +1,3 @@
+# Acknowledgment
+
+The R and Python programming languages (R Core Team 2019; Van Rossum and Drake 2009) and the following R and Python packages were used to perform the analysis: caret (Jed Wing et al. 2019), docopt (de Jonge 2018), feather (Wickham 2019), knitr (Xie 2014), tidyverse (Wickham 2017), docopt (Keleshev 2014), os (Van Rossum and Drake 2009), feather (McKinney 2019) Pandas (McKinney 2010). The code used to perform the analysis and create this report can be found [here](https://github.com/UBC-MDS/contraceptive_method_predictor/tree/main/src).
