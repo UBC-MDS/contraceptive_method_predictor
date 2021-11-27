@@ -46,6 +46,6 @@ C= 10.0
 gamma = 0.01
 
 ```{r hyperparam, echo=FALSE, fig.cap="Hyperparameter Selection", out.width = '100%'}
-hyperparameter <- read.csv("../results/val_score_results.csv") 
+hyperparameter <- read.csv("../results/Random_Search_results.csv") 
 knitr::kable(hyperparameter, "pipe")
 ```
