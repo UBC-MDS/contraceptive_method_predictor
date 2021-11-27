@@ -3,7 +3,7 @@
 
 """This code predicts the contraceptive method used based on the model derived from a pickle file and generates PR curve, Roc
 curve, classification report and confusion matrix.
-Usage: src/model.pickle --train_path=<train_path>, --test_path=<test_path>, --model=<model>, --output_path=<output_path>
+Usage: predict.py --train_path=<train_path>, --test_path=<test_path>, --model=<model>, --output_path=<output_path>
 
 Options:
 --train_path=<train_path>      path to the train set
