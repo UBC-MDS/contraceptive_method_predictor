@@ -46,7 +46,7 @@ At this intial stage we have done an EDA of the dataset and have found that
 
 ## License
 
-The source code for the site is licensed under the MIT license, which you can find [here](https://github.com/UBC-MDS/contraceptive_method_predictor/blob/main/LICENSE).
+The source code for the site is licensed under the Apache license, which you can find [here](https://github.com/UBC-MDS/contraceptive_method_predictor/blob/main/LICENSE).
 ## References 
 
 Tjen-Sien Lim (limt '@' stat.wisc.edu) http://archive.ics.uci.edu/ml/datasets/Contraceptive+Method+Choice
