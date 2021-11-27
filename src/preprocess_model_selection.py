@@ -119,6 +119,7 @@ def cross_val_multiple_models(preprocessor, X_train, y_train):
 def hyperparameter_tuning(preprocessor, X_train, y_train):
     """
     Performs hyperparameter tuning and returns best model and parameters
+    Saves RandomSearchCV results in CSV.
 
     Parameters
     ----------
@@ -158,9 +159,10 @@ def hyperparameter_tuning(preprocessor, X_train, y_train):
         "param_svc__class_weight",
         "mean_fit_time",
     ]].set_index("rank_test_score").sort_index().T
+    top5_models_df = cv_results_df.iloc[:,:5]
     print("Best hyperparameter values: ", random_search.best_params_)
     print("Best score: %0.3f" % (random_search.best_score_))
-    return random_search.best_estimator_,random_search.best_params_
+    return random_search.best_estimator_, random_search.best_params_, top5_models_df
     
 
 
@@ -194,16 +196,18 @@ def main(path, out_file, model_path):
 
     # Model Tuning 
     # SVC was decided to be the best model for this scenario
-    best_model, best_params = hyperparameter_tuning(preprocessor, X_train, y_train)
+    best_model, best_params, rcv_results = hyperparameter_tuning(preprocessor, X_train, y_train)
 
     try:
         pickle.dump(best_model, open(str(model_path),"wb"))
         pickle.dump(best_params, open(str(os.path.dirname(out_file))+"/final_params.pkl","wb"))
+        rcv_results.to_csv(str(os.path.dirname(out_file))+"/Random_Search_results.csv")
     except:
         os.makedirs(os.path.dirname(model_path))
         directory = os.path.dirname(model_path)
         pickle.dump(best_model, open(model_path,"wb"))
         pickle.dump(best_params, open(str(directory)+"/final_params.pkl","wb"))
+        rcv_results.to_csv(str(os.path.dirname(out_file))+"/Random_Search_results.csv")
 
     
 
