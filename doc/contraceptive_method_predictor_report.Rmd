@@ -1,17 +1,19 @@
 ---
 title: "Contraceptive Method Predictor Report"
 author: "Group 15 - Christopher Alexander, Yik Hong Chan, Abhiket Gaurav, Valli A"
-date: "11/26/2021 (updated: `r Sys.Date()`)""
+date: "11/26/2021 (updated: `r Sys.Date()`)"
 always_allow_html: true
 output: 
-  html_document:
+  bookdown::html_document2:
+    fig_caption: yes
+    number_sections: yes
     toc: true
 bibliography: 
   cmp_refs.bib
 ---
 
 ```{r setup_r, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
 library(kableExtra)
 library(tidyverse)
@@ -19,10 +21,6 @@ library(tidyverse)
 
 ```{python setup_py, include=FALSE}
 import pandas as pd
-```
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r summary, child="01_Summary.Rmd"}
