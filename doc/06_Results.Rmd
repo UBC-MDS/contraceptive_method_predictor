@@ -47,7 +47,7 @@ In order to get an overall score for our model . We observe the Area under the c
 knitr::include_graphics("../results/roc_curve.png")
 ```
 
-## Final Conclusion
+# Final Conclusion
 
 We have tried 4 different models, the intent was to predict the use of contraceptive based on socio-economic and education level. As we can see from the above parameters, The model is performing well with an accuracy of $74\%$ , recall of $90\%$, precision of $73\%$ , f1_score of $80\%$ and AUC $78\%$. This is in line with our validation scores.The very high recall shows that there are less number of false negatives.
 

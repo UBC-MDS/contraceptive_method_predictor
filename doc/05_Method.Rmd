@@ -23,7 +23,7 @@ From the EDA (Exploratory Data Analysis) and the variable description we found t
 |           | Husband's Occupation,Standard of living Index |                |                  |
 | Binary    | Wife's religion, Wife working Media Exposure  | None           | Pass through     |
 
-# Finding the best Model:
+## Finding the best Model:
 
 The target variable (Contraceptive method used) has three values:
 

@@ -44,6 +44,7 @@ From the figure \@ref(fig:countCat), the survey captured the majority of the obs
 knitr::include_graphics("../results/histogram_categorical.png")
 ```
 
+## Relation betweeen target and non-numerical features
 It is found that most of the observation by target class 1 (no contraception) lies on certain categorical variables from the figure \@ref(fig:countCatByTarget). But since there is class imbalance problem, we cannot imply that they are correlated.
 
 ```{r countCatByTarget, echo=FALSE, fig.cap="Counting Combinations of all categorical features by the target class", out.width = '100%'}
