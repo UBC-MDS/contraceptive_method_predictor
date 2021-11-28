@@ -3,53 +3,53 @@ output:
   html_document: default
   pdf_document: default
 ---
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(knitr)
 ```
 
-# Pre-Processing & Model Selection 
+# Pre-Processing & Model Selection
 
 ## Data Pre-Processing
-From the EDA(Exploratory Data Analysis) and the variable description we found that there were no missing value. However, the variables were of different data type.
 
+From the EDA (Exploratory Data Analysis) and the variable description we found that there were no missing value. However, the variables were of different data types. The following table shows the different variables and the transformations performed on each of them .
 
-| Data Type                  | Variables                                      | Transformation | Technique           |
-| -------------------------- | ---------------------------------------------- | -------------- |  -------------------|
-| Numerical                  | Wife's age,   Number of children ever born     | Scaling        | Standard Scaling    |
-| Ordinal                    | Wife's education, Husband Education,           | Encoding       | Ordinal Encoding    |
-|                            | Husband's Occupation,Standard of living Index  |                |                     |
-| Binary                     | Wife's religion, Wife working Media Exposure   | None           | Pass through        |
-
+| Data Type | Variables                                     | Transformation | Technique        |
+|-----------|-----------------------------------------------|----------------|------------------|
+| Numerical | Wife's age, Number of children ever born      | Scaling        | Standard Scaling |
+| Ordinal   | Wife's education, Husband Education,          | Encoding       | Ordinal Encoding |
+|           | Husband's Occupation,Standard of living Index |                |                  |
+| Binary    | Wife's religion, Wife working Media Exposure  | None           | Pass through     |
 
 # Finding the best Model:
 
-The target variable,( Contraceptive method used ), has three values:
+The target variable (Contraceptive method used) has three values:
 
 1=No-use, 2=Long-term, 3=Short-term
 
-During the EDA we found that there was a class imbalance problem. Hence, we combined 2=Long-term, 3=Short-term into one class and it was given a value of 1.  1=No-use was given a value of 0.
-So now we have  0=No-use : 445 observations, 1=use : 586 observations. Now, it is binary classification problem. The model we tried:
+For simplicity and better model performance. We have combined 2=Long-term, 3=Short-term into one class and it was given a value of 1. And the label 1=No-use was given a value of 0.
 
-1. Decision Tree
-2. kNN
-3. Logistic Regression
-4. RBF SVC
+Our target distribution now have 0=No-use : 445 observations, 1=use : 586 observations.Our problem turns into binary classification problem. The algorithms we tried in the process of finding the best model are:
+
+1.  Decision Tree
+2.  kNN
+3.  Logistic Regression
+4.  RBF SVC
 
 ## Results of Cross Validation
-From the Figure \@ref(tab:crossVal) It can be clearly seen than the RBF SVC is giving us the best score on both train and cross val dataset.
+
+From the Figure \@ref(tab:crossVal) It can be clearly seen than the RBF SVC is giving us the best score on both train and cross val dataset. The evaluation metric used for the cross validation was accuracy.
 
 ```{r crossVal, echo=FALSE }
 cross_val <- read.csv("../results/val_score_results.csv") 
 kable(cross_val, caption="Cross Validation Result (Score for Accuracy)")
 ```
 
-
 ## Hyper-Parameter Optimization
-Since the performance of RBF SVC was the best we took it further for hyper-parameter tuning \@ref(tab:hyperparam). We found that the best parameters are:
-C= 10.0
-gamma = 0.01
+
+Since the performance of RBF SVC was the best we took it further for hyper-parameter tuning. The results of the top 5 models are shown in \@ref(tab:hyperparam). We found that the best parameters are: C= 10.0 gamma = 0.01.
 
 ```{r hyperparam, echo=FALSE}
 hyperparameter <- read.csv("../results/Random_Search_results.csv") 
