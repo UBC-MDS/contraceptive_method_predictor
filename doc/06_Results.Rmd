@@ -3,11 +3,13 @@ output:
   html_document: default
   pdf_document: default
 ---
-# Model Testing
-After finding out the best parameters by optimizing the accuracy score, we tried the model on the test data set.In Total there were 442 Observations in the test split. 
 
-a) 0=No Use = 184
-b) 1=Use = 258
+# Model Testing
+
+After finding out the best parameters by optimizing the accuracy score, we tried the model on the test data set. In Total there were 442 Observations in the test split.
+
+a)  0=No Use = 184
+b)  1=Use = 258
 
 ## Confusion Matrix:
 
@@ -19,37 +21,34 @@ knitr::include_graphics("../results/cm.png")
 
 ```
 
-Look at the confusion matrix we can see that model is predicting well, the accuracy is 0.74. However, there are also some false -ve and false +ve error that is coming, so there are still some scope of improvement.
+By looking at the confusion matrix we can see the model predicting well on the total number of True positives i.e 231 and True Negatives i.e 97 . However they are some false +ve and -ve . False positives are given by where we predict the usage of contraceptive's when in fact the person does not use contraceptives i.e in our matrix 87 .
 
 ## Scoring Metric:
 
-We also looked at the recall, precision and the f1-score \@ref(fig:scoringmet)::
+We also looked at the recall, precision and the f1-score considering each class to be the positive class. The recall of 0.90 says we have a good true positive rate (TPR ) for the `1` class while the 0.53 shows the TPR of the `0` class. The cumulative scores can be found in `macro avg` and `weighted avg` \@ref(fig:scoringmet)::
 
 ```{r scoringmet, echo=FALSE, fig.cap="Scoring Metrics", out.width = '50%'}
 knitr::include_graphics("../results/cl_report.png")
 ```
 
-
 ## Precision-Recall Curve:
 
-Figure \@ref(fig:precrec)
+To understand the precision and recall trade off our model we plotted the PR curve with the mean Average Precision score. We observed a good enough AP score of 0.79 Figure \@ref(fig:precrec)
 
 ```{r precrec, echo=FALSE, fig.cap="Precision vs Recall Curve", out.width = '50%'}
 knitr::include_graphics("../results/pr_curve.png")
 ```
 
-
 ## ROC Curve
 
-Figure \@ref(fig:roccurve)
+In order to get an overall score for our model . We observe the Area under the curve which gives us a decent score of 78% Figure \@ref(fig:roccurve)
+
 ```{r roccurve, echo=FALSE, fig.cap="AUC ROC Curve", out.width = '100%'}
 knitr::include_graphics("../results/roc_curve.png")
 ```
 
-## Final Conclusion
+# Final Conclusion
 
-
-We have tried 4 different models, the intent was to predict the use of contraceptive based on socio-economic and eduction level. As we can see from the above parameters, The model is performing well with an accuracy of $0.74$ and recall of $0.9$, precision of $0.73$ and f1_score of $0.8$ and AUC $78%$. This is in line with our training model.The very high recall shows that there are less number of false negatives.
+We have tried 4 different models, the intent was to predict the use of contraceptive based on socio-economic and education level. As we can see from the above parameters, The model is performing well with an accuracy of $74\%$ , recall of $90\%$, precision of $73\%$ , f1_score of $80\%$ and AUC $78\%$. This is in line with our validation scores.The very high recall shows that there are less number of false negatives.
 
 Nevertheless, there are still cases where the model is not predicting correctly, and hence there is scope of improvement, before we deploy it in a real world scenario.
-
