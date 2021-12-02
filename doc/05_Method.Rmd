@@ -40,7 +40,7 @@ Our target distribution now have 0=No-use : 445 observations, 1=use : 586 observ
 
 ## Results of Cross Validation
 
-From the Figure \@ref(tab:crossVal) It can be clearly seen than the RBF SVC is giving us the best score on both train and cross val dataset. The evaluation metric used for the cross validation was accuracy.
+From the Table \@ref(tab:crossVal) It can be clearly seen than the RBF SVC is giving us the best score on both train and cross val dataset. The evaluation metric used for the cross validation was accuracy.
 
 ```{r crossVal, echo=FALSE }
 cross_val <- read.csv("../results/val_score_results.csv") 

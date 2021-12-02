@@ -13,7 +13,7 @@ b)  1=Use = 258
 
 ## Confusion Matrix:
 
-We will study the confusion matrix to understand the model's predictive power\@ref(fig:confusionmat):
+We will study the confusion matrix to understand the model's predictive power from the figure \@ref(fig:confusionmat):
 
 ```{r confusionmat, echo=FALSE, fig.cap="Confusion Matrix (Actual vs Predicted)", out.width = '50%'}
 
@@ -25,15 +25,17 @@ By looking at the confusion matrix we can see the model predicting well on the t
 
 ## Scoring Metric:
 
-We also looked at the recall, precision and the f1-score considering each class to be the positive class. The recall of 0.90 says we have a good true positive rate (TPR ) for the `1` class while the 0.53 shows the TPR of the `0` class. The cumulative scores can be found in `macro avg` and `weighted avg` \@ref(fig:scoringmet)::
+We also looked at the recall, precision and the f1-score considering each class to be the positive class. The recall of 0.90 says we have a good true positive rate (TPR ) for the `1` class while the 0.53 shows the TPR of the `0` class. The cumulative scores can be found in `macro avg` and `weighted avg` in the table \@ref(tab:scoringmet).
 
-```{r scoringmet, echo=FALSE, fig.cap="Scoring Metrics", out.width = '50%'}
-knitr::include_graphics("../results/cl_report.png")
+```{r scoringmet, echo=FALSE, tab.cap="Scoring Metrics", out.width = '50%'}
+# knitr::include_graphics("../results/cl_report.png")
+cl_report <- read.csv(file = '../results/cl_report.csv')
+knitr::kable(cl_report, caption = "Scoring Metrics")
 ```
 
 ## Precision-Recall Curve:
 
-To understand the precision and recall trade off our model we plotted the PR curve with the mean Average Precision score. We observed a good enough AP score of 0.79 Figure \@ref(fig:precrec)
+To understand the precision and recall trade off our model we plotted the PR curve with the mean Average Precision score. We observed a good enough AP score of 0.79 from the figure \@ref(fig:precrec).
 
 ```{r precrec, echo=FALSE, fig.cap="Precision vs Recall Curve", out.width = '50%'}
 knitr::include_graphics("../results/pr_curve.png")
@@ -41,7 +43,7 @@ knitr::include_graphics("../results/pr_curve.png")
 
 ## ROC Curve
 
-In order to get an overall score for our model . We observe the Area under the curve which gives us a decent score of 78% Figure \@ref(fig:roccurve)
+In order to get an overall score for our model . We observe the Area under the curve which gives us a decent score of 78% from the figure \@ref(fig:roccurve).
 
 ```{r roccurve, echo=FALSE, fig.cap="AUC ROC Curve", out.width = '100%'}
 knitr::include_graphics("../results/roc_curve.png")
