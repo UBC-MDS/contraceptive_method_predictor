@@ -1,7 +1,6 @@
 # Contraceptive Method Predictor
 
--   Author: Christopher Alexander
--   Contributors: Yik Hong Chan, Abhiket Gaurav, Valli A
+-   Authors: Christopher Alexander, Yik Hong Chan, Abhiket Gaurav, Valli A
 
 A data analysis project to predict the contraceptive method choice of a woman based on her demographic and socio-economic characteristics.
 
