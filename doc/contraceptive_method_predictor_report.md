@@ -1,7 +1,7 @@
 Contraceptive Method Predictor Report
 ================
 Christopher Alexander, Yik Hong Chan, Abhiket Gaurav, Valli A
-2021-11-26 (updated: 2021-11-29)
+2021-11-26 (updated: 2021-12-01)
 
 # Summary
 
@@ -165,14 +165,14 @@ The algorithms we tried in the process of finding the best model are:
 
 ## Results of Cross Validation
 
-From the Figure @ref(tab:crossVal) It can be clearly seen than the RBF
+From the Table @ref(tab:crossVal) It can be clearly seen than the RBF
 SVC is giving us the best score on both train and cross val dataset. The
 evaluation metric used for the cross validation was accuracy.
 
 | X           | decision.tree |       kNN | Logistic.Regression |   RBF.SVM |
 |:------------|--------------:|----------:|--------------------:|----------:|
-| fit_time    |     0.0075013 | 0.0060797 |           0.0127588 | 0.0252872 |
-| score_time  |     0.0033298 | 0.0087663 |           0.0031190 | 0.0130505 |
+| fit_time    |     0.0098273 | 0.0082191 |           0.0153574 | 0.0303621 |
+| score_time  |     0.0045062 | 0.0102589 |           0.0046051 | 0.0165946 |
 | test_score  |     0.6313916 | 0.6460016 |           0.6595563 | 0.6944796 |
 | train_score |     0.9856934 | 0.7737629 |           0.6808932 | 0.7485466 |
 
@@ -191,7 +191,7 @@ gamma = 0.01.
 | param_svc\_\_gamma        |  0.0100000 |    0.0010000 |    0.0100000 |   0.0100000 |  0.1000000 |
 | param_svc\_\_C            | 10.0000000 | 1000.0000000 | 1000.0000000 | 100.0000000 | 10.0000000 |
 | param_svc\_\_class_weight |         NA |           NA |           NA |          NA |         NA |
-| mean_fit_time             |  0.2298147 |    0.2732129 |    0.6221072 |   0.2664836 |  0.2516678 |
+| mean_fit_time             |  0.2216006 |    0.2799135 |    0.7621474 |   0.2556744 |  0.2412624 |
 
 Hyperparameter Selection
 
@@ -207,7 +207,7 @@ Observations in the test split.
 ## Confusion Matrix:
 
 We will study the confusion matrix to understand the model’s predictive
-power@ref(fig:confusionmat):
+power from the figure @ref(fig:confusionmat):
 
 <img src="../results/cm.png" title="Confusion Matrix (Actual vs Predicted)" alt="Confusion Matrix (Actual vs Predicted)" width="50%" />
 
@@ -223,23 +223,31 @@ We also looked at the recall, precision and the f1-score considering
 each class to be the positive class. The recall of 0.90 says we have a
 good true positive rate (TPR ) for the `1` class while the 0.53 shows
 the TPR of the `0` class. The cumulative scores can be found in
-`macro avg` and `weighted avg` @ref(fig:scoringmet)::
+`macro avg` and `weighted avg` in the table @ref(tab:scoringmet).
 
-<img src="../results/cl_report.png" title="Scoring Metrics" alt="Scoring Metrics" width="50%" />
+| X            | precision |    recall |  f1.score | support |
+|:-------------|----------:|----------:|----------:|--------:|
+| contra_no    | 0.7822581 | 0.5271739 | 0.6298701 |     184 |
+| contra_yes   | 0.7264151 | 0.8953488 | 0.8020833 |     258 |
+| accuracy     |        NA |        NA | 0.7420814 |      NA |
+| macro avg    | 0.7543366 | 0.7112614 | 0.7159767 |     442 |
+| weighted avg | 0.7496619 | 0.7420814 | 0.7303928 |     442 |
+
+Scoring Metrics
 
 ## Precision-Recall Curve:
 
 To understand the precision and recall trade off our model we plotted
 the PR curve with the mean Average Precision score. We observed a good
-enough AP score of 0.79 Figure @ref(fig:precrec)
+enough AP score of 0.79 from the figure @ref(fig:precrec).
 
 <img src="../results/pr_curve.png" title="Precision vs Recall Curve" alt="Precision vs Recall Curve" width="50%" />
 
 ## ROC Curve
 
 In order to get an overall score for our model . We observe the Area
-under the curve which gives us a decent score of 78% Figure
-@ref(fig:roccurve)
+under the curve which gives us a decent score of 78% from the figure
+@ref(fig:roccurve).
 
 <img src="../results/roc_curve.png" title="AUC ROC Curve" alt="AUC ROC Curve" width="100%" />
 
