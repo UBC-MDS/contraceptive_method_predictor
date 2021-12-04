@@ -32,15 +32,27 @@ From the histogram \@ref(fig:histTarget) it can be observed that the target clas
 knitr::include_graphics("../results/histogram_target.png")
 ```
 
+<<<<<<< HEAD
 ## Histogram of all numerical features
 From the distributions in the histogram \@ref(fig:histNum), it can be observed that the data is skewed to the right. This can be attributed to significantly higher numbers of wives who are between 28 to 38 years old than those with ages higher than 38 years, and that most of the wives have two to three kids on average. 
+=======
+## Numerical features
+From the distributions in the histogram \@ref(fig:histNum), it can be observed that the data is skewed to the right. This can be attributed to significantly higher numbers of wives who are between 28 to 38 years old than those with ages higher than 38 years, and that most of the wives have two to three kids on average. 
+
+>>>>>>> 415ea14d0397fd3bfa49bd45949c09eaeeb3a5c5
 
 ```{r histNum, echo=FALSE, fig.cap="Histogram of all numerical features", out.width = '100%'}
 knitr::include_graphics("../results/histogram_numerical.png")
 ```
 
+<<<<<<< HEAD
 ## Histogram of all non-numerical features
 From the histogram \@ref(fig:countCat), it can be observed that a majority of the responses / observations in the survey are from women having high levels of education, religious beliefs, with educated partners and with a high standard of living. 
+=======
+## Non-numerical features
+From the histogram \@ref(fig:countCat), it can be observed that a majority of the responses / observations in the survey are from women having high levels of education, religious beliefs, with educated partners and with a high standard of living. 
+
+>>>>>>> 415ea14d0397fd3bfa49bd45949c09eaeeb3a5c5
 ```{r countCat, echo=FALSE, fig.cap="Histogram of all non-numeric features", out.width = '100%'}
 knitr::include_graphics("../results/histogram_categorical.png")
 ```
