@@ -1,5 +1,4 @@
-# 04_EDA.rmd
-# Data Exploration (EDA)
+# Exploratory Data Analysis (EDA)
 
 ## Summary of the training dataset
 First, it is important to identify and understand the attributes of the dataset. Exploratory data analysis was performed on the training dataset and was found to have no missing values. The attributes of the training dataset are outlined below
@@ -26,21 +25,20 @@ train_df.info()
 ```
 
 ## Distribution of target class
-From the histogram \@ref(fig:histTarget) it can be observed that the target class is imbalanced - with 1 (No-use) being the most observed value, followed by 3 (Short-term) and 2 (Long-term). However, it is not immediately necessary to over- or under-sample the data in our analysis. Our intent here is to first explore the dataset and create the model.
+From the histogram \@ref(fig:histTarget) it can be observed that there are three classes - with 1 ("No-use"), 2 ("Long-term use"), followed by 3 ("Short-term use"). We have combined 2 and 3 as "use" case and have left 1 as it is ("no-use" case). With this modification we are trying to predict the "use vs no use" of contraceptives.
 
 ```{r histTarget, echo=FALSE, fig.cap="Histogram of the Contraceptive Method used (target class)", out.width = '50%'}
 knitr::include_graphics("../results/histogram_target.png")
 ```
 
-## Numerical features
+## Histogram of all numerical features
 From the distributions in the histogram \@ref(fig:histNum), it can be observed that the data is skewed to the right. This can be attributed to significantly higher numbers of wives who are between 28 to 38 years old than those with ages higher than 38 years, and that most of the wives have two to three kids on average. 
-
 
 ```{r histNum, echo=FALSE, fig.cap="Histogram of all numerical features", out.width = '100%'}
 knitr::include_graphics("../results/histogram_numerical.png")
 ```
 
-## Non-numerical features
+## Histogram of all non-numerical features
 From the histogram \@ref(fig:countCat), it can be observed that a majority of the responses / observations in the survey are from women having high levels of education, religious beliefs, with educated partners and with a high standard of living. 
 
 ```{r countCat, echo=FALSE, fig.cap="Histogram of all non-numeric features", out.width = '100%'}
