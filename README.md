@@ -18,6 +18,10 @@ After selecting our final model, we will refit the model on the complete trainin
 
 An initial exploratory data analysis performed as a part of the release v0.0.1 can be found [here](https://github.com/UBC-MDS/contraceptive_method_predictor/blob/main/src/eda.ipynb).
 
+The workflow and code implementation was perfomed as a part of the release v0.1.0 can be found [here](https://github.com/UBC-MDS/contraceptive_method_predictor/releases/tag/v0.1.0).
+
+The final report for the project can be found at https://github.com/UBC-MDS/contraceptive_method_predictor/blob/main/doc/contraceptive_method_predictor_report.md
+
 ## Data Analysis Workflow
 
 In this project, we created 6 scripts to run our data analysis. As illustrated in the figure below.
