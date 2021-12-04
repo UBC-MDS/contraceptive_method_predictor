@@ -14,9 +14,9 @@ library(knitr)
 
 ## Data Pre-Processing
 
-From the EDA (Exploratory Data Analysis) and the variable description we found that there were no missing value. However, the variables were of different data types. The following table shows the different variables and the transformations performed on each of them .
+Based on the EDA (Exploratory Data Analysis) performed earlier and variable descriptions, it can be inferred that there are no missing values. However, the variables were of different data types. In order to perform operations on data, we need to ensure consistency of data types. *Define transformation*. The following table shows different variables in the dataset and the respective transformation performed on each of them.
 
-| Data Type | Variables                                     | Transformation | Technique        |
+| Data Type | Variable                                     | Transformation performed | Technique used       |
 |-----------|-----------------------------------------------|----------------|------------------|
 | Numerical | Wife's age, Number of children ever born      | Scaling        | Standard Scaling |
 | Ordinal   | Wife's education, Husband Education,          | Encoding       | Ordinal Encoding |
@@ -24,14 +24,21 @@ From the EDA (Exploratory Data Analysis) and the variable description we found t
 | Binary    | Wife's religion, Wife working Media Exposure  | None           | Pass through     |
 
 ## Finding the best Model:
-
+Our intent here is to find the probability of ___ and 
 The target variable (Contraceptive method used) has three values:
+```
+1 = No-use
+2 = Long-term, and
+3 = Short-term
+```
 
-1=No-use, 2=Long-term, 3=Short-term
+For simplicity and better model performance. We have combined `2 = Long-term`, `3 = Short-term` into one class and it was given a value of `1`. And the label `1 = No-use` was given a value of `0`, beacuse our aim is to predict the use(long or short)/ no use of contraceptives .
 
-For simplicity and better model performance. We have combined 2=Long-term, 3=Short-term into one class and it was given a value of 1. And the label 1=No-use was given a value of 0.
+Our target distribution now have 
+* `0 = No-use` : **445** observations, 
+* `1 = use` : **586** observations.
 
-Our target distribution now have 0=No-use : 445 observations, 1=use : 586 observations.Our problem turns into binary classification problem. The algorithms we tried in the process of finding the best model are:
+With this data, our problem statement now turns into binary classification problem. The algorithms we used and tried in the process of finding the best model are:
 
 1.  Decision Tree
 2.  kNN
@@ -40,7 +47,7 @@ Our target distribution now have 0=No-use : 445 observations, 1=use : 586 observ
 
 ## Results of Cross Validation
 
-From the Table \@ref(tab:crossVal) It can be clearly seen than the RBF SVC is giving us the best score on both train and cross val dataset. The evaluation metric used for the cross validation was accuracy.
+From the table \@ref(tab:crossVal), it can be clearly inferred that the RBF SVC algorithm is giving us the best score on both training and cross val dataset. The metric used to evaluate the cross validation was **accuracy**.
 
 ```{r crossVal, echo=FALSE }
 cross_val <- read.csv("../results/val_score_results.csv") 
@@ -49,7 +56,9 @@ kable(cross_val, caption="Cross Validation Result (Score for Accuracy)")
 
 ## Hyper-Parameter Optimization
 
-Since the performance of RBF SVC was the best we took it further for hyper-parameter tuning. The results of the top 5 models are shown in \@ref(tab:hyperparam). We found that the best parameters are: C= 10.0 gamma = 0.01.
+Given the performance of RBF SVC was the best, it was chosen for hyper-parameter tuning. The results of the top 5 models are shown in \@ref(tab:hyperparam). 
+
+It can be observed that the best parameters are: `C = 10.0`, `gamma = 0.01`.
 
 ```{r hyperparam, echo=FALSE}
 hyperparameter <- read.csv("../results/Random_Search_results.csv") 
