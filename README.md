@@ -20,7 +20,7 @@ An initial exploratory data analysis performed as a part of the release v0.0.1 c
 
 The workflow and code implementation was perfomed as a part of the release v0.1.0 can be found [here](https://github.com/UBC-MDS/contraceptive_method_predictor/releases/tag/v0.1.0).
 
-The final report for the project can be found at https://github.com/UBC-MDS/contraceptive_method_predictor/blob/main/doc/contraceptive_method_predictor_report.html.
+The final report for the project can be found at https://github.com/UBC-MDS/contraceptive_method_predictor/blob/main/doc/contraceptive_method_predictor_report.md
 
 ## Data Analysis Workflow
 
