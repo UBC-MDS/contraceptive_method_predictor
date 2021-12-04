@@ -25,7 +25,7 @@ train_df.info()
 ```
 
 ## Distribution of target class
-From the Figure \@ref(fig:histTarget) It can be seen that the target class is imbalanced, with 1 (No-use) being the most observations, followed by 3 (Short-term) and 2 (Long-term). But it is not necessary to immediately start our modelling plan with over- or under-samplinyg. We shall explore the data and create the model first.
+From the Figure \@ref(fig:histTarget) For simplicity reasons we have combined the use of contraceptive into one group and no use of contraceptive into another. This way, it becomes a binary classification problem, on which we have build our predictive model.
 
 ```{r histTarget, echo=FALSE, fig.cap="Histogram of the Contraceptive Method used (target class)", out.width = '50%'}
 knitr::include_graphics("../results/histogram_target.png")
@@ -44,8 +44,7 @@ From the figure \@ref(fig:countCat), the survey captured the majority of the obs
 knitr::include_graphics("../results/histogram_categorical.png")
 ```
 
-## Relation betweeen target and non-numerical features
-It is found that most of the observation by target class 1 (no contraception) lies on certain categorical variables from the figure \@ref(fig:countCatByTarget). But since there is class imbalance problem, we cannot imply that they are correlated.
+It is found that most of the observation by target class 1 (no contraception) lies on certain categorical variables from the figure \@ref(fig:countCatByTarget). 
 
 ```{r countCatByTarget, echo=FALSE, fig.cap="Counting Combinations of all categorical features by the target class", out.width = '100%'}
 knitr::include_graphics("../results/counts_categorical_by_target.png")
