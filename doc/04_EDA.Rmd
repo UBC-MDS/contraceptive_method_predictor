@@ -1,7 +1,8 @@
-# EDA
+# 04_EDA.rmd
+# Data Exploration (EDA)
 
-## Summary of the train data
-We performed the exploratory data analysis on the train data. There are no missing values in the train dataset. Below is the attribute information.
+## Summary of the training dataset
+First, it is important to understand the atributes of the dataset. We performed exploratory data analysis on the training dataset and we found no missing values. The attributes of the training dataset are outlined below
 
 | Column name                  | Description                                  | Type       | Values                              |
 | ---------------------------- | ------------------------------------------- | ----------- |  ---------------------------------- |
@@ -25,27 +26,29 @@ train_df.info()
 ```
 
 ## Distribution of target class
-From the Figure \@ref(fig:histTarget) It can be seen that the target class is imbalanced, with 1 (No-use) being the most observations, followed by 3 (Short-term) and 2 (Long-term). But it is not necessary to immediately start our modelling plan with over- or under-samplinyg. We shall explore the data and create the model first.
+From the histogram \@ref(fig:histTarget) it can be observed that the target class is imbalanced - with 1 (No-use) being the most observed value, followed by 3 (Short-term) and 2 (Long-term). However, it is not immediately necessary to over- or under-sample the data in our analysis. Our intent here is to first explore the dataset and create the model.
 
 ```{r histTarget, echo=FALSE, fig.cap="Histogram of the Contraceptive Method used (target class)", out.width = '50%'}
 knitr::include_graphics("../results/histogram_target.png")
 ```
 
-## Histogram of all numerical features
-After taking a look at the distributions of our numerical features from the figure \@ref(fig:histNum), and we found that their distribution are skewed to the right. This is expected as there are more young wife than old wife and most people have around two to three kids.
+## Numerical features
+From the distributions in the histogram \@ref(fig:histNum), it can be observed that the data is skewed to the right. This can be attributed to significantly higher numbers of wives who are between 28 to 38 years old than those with ages higher than 38 years, and that most of the wives have two to three kids on average. 
+
 
 ```{r histNum, echo=FALSE, fig.cap="Histogram of all numerical features", out.width = '100%'}
 knitr::include_graphics("../results/histogram_numerical.png")
 ```
 
-## Histogram of all non-numerical features
-From the figure \@ref(fig:countCat), the survey captured the majority of the observation from women with high levels of education, religious belief, educated partners and living at a high standard of living. 
+## Non-numerical features
+From the histogram \@ref(fig:countCat), it can be observed that a majority of the responses / observations in the survey are from women having high levels of education, religious beliefs, with educated partners and with a high standard of living. 
+
 ```{r countCat, echo=FALSE, fig.cap="Histogram of all non-numeric features", out.width = '100%'}
 knitr::include_graphics("../results/histogram_categorical.png")
 ```
 
 ## Relation betweeen target and non-numerical features
-It is found that most of the observation by target class 1 (no contraception) lies on certain categorical variables from the figure \@ref(fig:countCatByTarget). But since there is class imbalance problem, we cannot imply that they are correlated.
+From the figure \@ref(fig:countCatByTarget), it can be observed that most of the observations of target class 1 (no contraception) rest on certain categorical values. However, as we had earlier pointed out the imbalance in the distribution of class values, we cannot imply correlation. 
 
 ```{r countCatByTarget, echo=FALSE, fig.cap="Counting Combinations of all categorical features by the target class", out.width = '100%'}
 knitr::include_graphics("../results/counts_categorical_by_target.png")
