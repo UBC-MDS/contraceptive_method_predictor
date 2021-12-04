@@ -8,6 +8,9 @@ output:
     fig_caption: yes
     number_sections: yes
     toc: true
+  github_document:
+    number_sections: yes
+    toc: TRUE
 bibliography: 
   cmp_refs.bib
 ---

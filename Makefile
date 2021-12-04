@@ -29,7 +29,7 @@ results/cm.png results/pr_curve.png results/roc_curve.png: src/predict.py result
 doc/contraceptive_method_predictor_report.html doc/contraceptive_method_predictor_report.md: doc/contraceptive_method_predictor_report.Rmd \
 doc/cmp_refs.bib doc/01_Summary.Rmd doc/02_Intro.Rmd doc/03_Data.Rmd \
 doc/04_EDA.Rmd doc/05_Method.Rmd doc/06_Results.Rmd doc/07_Acknowledgment.Rmd
-	Rscript -e "rmarkdown::render('doc/contraceptive_method_predictor_report.Rmd')"
+	Rscript -e "rmarkdown::render('doc/contraceptive_method_predictor_report.Rmd',output_format = 'all')"
 
 clean: 
 	rm -rf data
