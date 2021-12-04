@@ -24,7 +24,8 @@ knitr::include_graphics("../results/cm.png")
 The recall, precision and the f1-score were observed while considering each class to be the positive class. The recall value of **0.90** indicates a good true positive rate (TPR) for the `1` class while the **0.53** indicates the TPR of the `0` class. These cumulative scores can be found in `macro avg` and `weighted avg` in the table \@ref(tab:scoringmet).
 
 ```{r scoringmet, echo=FALSE, fig.cap="Scoring Metrics", out.width = '50%'}
-knitr::include_graphics("../results/cl_report.png")
+cl_report <- read.csv(file = '../results/cl_report.csv')
+knitr::kable(cl_report, caption = "Scoring Metrics")
 ```
 
 
@@ -39,8 +40,6 @@ knitr::include_graphics("../results/pr_curve.png")
 ## ROC Curve
 
 In order to obtain an overall score for our model, the Area under the curve was observed which resulted in a decent score of 78% from the figure \@ref(fig:roccurve).
-
-
 
 ```{r roccurve, echo=FALSE, fig.cap="AUC ROC Curve", out.width = '100%'}
 knitr::include_graphics("../results/roc_curve.png")
