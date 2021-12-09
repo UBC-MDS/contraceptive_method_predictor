@@ -1,9 +1,9 @@
-FROM continuumio/anaconda3
-RUN apt update
-RUN apt -y upgrade
-RUN apt-get install make
-RUN apt -y install r-base
-RUN apt -y install r-base-dev
+FROM jupyter/datascience-notebook
+# RUN apt update
+# RUN apt -y upgrade
+# RUN apt-get install make
+# RUN apt -y install r-base
+# RUN apt -y install r-base-dev
 RUN conda install --quiet --yes \
     'shap' \
     'lightgbm' \
@@ -15,5 +15,9 @@ RUN conda install --quiet --yes \
     'pip' \
     "matplotlib>=3.2.2" \
     'pandoc' \
-    'docopt' 
-RUN conda install -c conda-forge/label/cf202003 altair_saver -y
+    'docopt' \
+    'altair_saver' \
+    'r-reticulate'
+RUN  R -e 'install.packages("bookdown",repos = "http://cran.us.r-project.org")'
+# RUN  R -e 'install.packages("reticulate")'
+# RUN conda install -c conda-forge/label/cf202003 altair_saver -y
