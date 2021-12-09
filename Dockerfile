@@ -1,9 +1,4 @@
 FROM jupyter/datascience-notebook
-# RUN apt update
-# RUN apt -y upgrade
-# RUN apt-get install make
-# RUN apt -y install r-base
-# RUN apt -y install r-base-dev
 RUN conda install --quiet --yes \
     'shap' \
     'lightgbm' \
