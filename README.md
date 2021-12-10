@@ -37,7 +37,7 @@ In this project, we created 6 scripts to run our data analysis. As illustrated i
 
 ## Usage
 
-<<<<<<< HEAD
+
 To replicate the analysis, clone this GitHub repository, install the dependencies listed below, and run the following command at the command line / terminal from the root directory of this project:
 
     # for first time installation
@@ -85,7 +85,7 @@ To reset the repo to a clean state, with no intermediate or results files, run t
 ```shell
 make clean
 ```
->>>>>>> bb85d9b7ecf1e6b6317eb6df1e99e43a239376f7
+
 
 ## Initial EDA
 

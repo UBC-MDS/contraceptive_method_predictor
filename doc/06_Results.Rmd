@@ -37,7 +37,7 @@ knitr::kable(cl_report, caption = "Scoring Metrics")
 
 
 The precision and recall trade-off of our model could be observed by plotting the PR curve with the mean Average Precision score. A good enough AP score of 0.79 could be observed from the figure \@ref(fig:precrec).
->>>>>>> bb85d9b7ecf1e6b6317eb6df1e99e43a239376f7
+
 
 ```{r precrec, echo=FALSE, fig.cap="Precision vs Recall Curve", out.width = '50%'}
 knitr::include_graphics("../results/pr_curve.png")
