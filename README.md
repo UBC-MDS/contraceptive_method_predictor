@@ -20,7 +20,7 @@ An initial exploratory data analysis performed as a part of the release v0.0.1 c
 
 The workflow and code implementation was perfomed as a part of the release v0.1.0 can be found [here](https://github.com/UBC-MDS/contraceptive_method_predictor/releases/tag/v0.1.0).
 
-The final report for the project can be found at https://github.com/UBC-MDS/contraceptive_method_predictor/blob/main/doc/contraceptive_method_predictor_report.md
+The final report for the project can be found at <https://github.com/UBC-MDS/contraceptive_method_predictor/blob/main/doc/contraceptive_method_predictor_report.md>
 
 ## Data Analysis Workflow
 
@@ -37,55 +37,46 @@ In this project, we created 6 scripts to run our data analysis. As illustrated i
 
 ## Usage
 
-
 To replicate the analysis, clone this GitHub repository, install the dependencies listed below, and run the following command at the command line / terminal from the root directory of this project:
 
-    # for first time installation
-    conda env create -f env-cmp.yaml
-     
-    # activate virtual environment
-    conda activate cmp
+#### 1. Using Docker
 
-    # download data
-    python src/download_data.py --url=https://archive.ics.uci.edu/ml/machine-learning-databases/cmc/cmc.data --out_file=data/raw/contraceptive.csv
+Install [Docker](https://www.docker.com/get-started). Run the following command in the command line from the root directory of this project:
 
-    # split into train & test
-    python src/split_data.py --path=data/raw/contraceptive.csv --out_file=data/processed/
+To build the docker image, run the following command at the command line/terminal from the root directory of this project:
 
-    # create EDA figure and write to file
-    python src/eda.py --train_dir=data/processed/train.csv --out_dir=./results
+    docker build --tag cmp .
 
-    # pre-process data and train model
-    python src/preprocess_model_selection.py --path="../data/processed/train.csv" --score_file="../results/val_score_results.csv" --model_path=results/models/final_svc.pkl
+To run the docker container, run the following command at the command line/terminal from the root directory of this project:
 
-    # test model
-    python src/predict.py --test_path="../data/processed/test.csv" --model="../results/models/final_svc.pkl" --output_path="../results/"
+    docker run --rm -it -v $(pwd):/home/jovyan/work/contraceptive cmp make -C /home/jovyan/work/contraceptive all
 
-    # render final report
-    Rscript -e "rmarkdown::render('doc/contraceptive_method_predictor_report.Rmd', output_format = 'github_document')"
+To reset the repo to a clean state, with no intermediate or results files, run the following command at the command line/terminal from the root directory of this project:
 
+    docker run --rm -it -v $(pwd):/home/jovyan/work/contraceptive cmp make -C /home/jovyan/work/contraceptive clean
+
+#### 2. Without using Docker
 
 To replicate the analysis, clone this GitHub repository, install the dependencies listed below, and run the following command at the command line / terminal from the root directory of this project.
 
 Install all the dependencies listed under the "Dependencies" header. To create and activate the environment, run the following commands in the command line from the root directory of this project:
 
-```shell
+``` shell
 conda env create --file env-cmp.yaml
 conda activate cmp
 ```
 
 Once dependencies are installed, run the following command at the command line from the root directory of this project:
 
-```shell
+``` shell
 make all
 ```
 
 To reset the repo to a clean state, with no intermediate or results files, run the following command at the command line from the root directory of this project:
 
-```shell
+``` shell
 make clean
 ```
-
 
 ## Initial EDA
 
