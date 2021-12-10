@@ -19,6 +19,19 @@ jobs:
         WITH_V: true
         RELEASE_BRANCHES: main
       id: bump
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      with:
+        tag_name: ${{ steps.bump.outputs.new_tag }}
+        release_name: ${{ steps.bump.outputs.new_tag }}
+        body: |
+          Changes in this Release
+          - Rebuilt Docker image and published to DockerHub with new tag
+        draft: false
+        prerelease: false
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
