@@ -30,6 +30,8 @@ from sklearn.metrics import PrecisionRecallDisplay
 from sklearn.metrics import RocCurveDisplay 
 from sklearn.metrics import ConfusionMatrixDisplay
 from docopt import docopt
+from sklearn.inspection import permutation_importance
+
 
 #%matplotlib inline
 import pickle
@@ -40,7 +42,7 @@ def main(test_path,model, output_path):
     test_df = pd.read_csv(test_path)
     
     #splitting into X_train and y_train
-    # X_train, y_train = train_df.drop(columns=["Contraceptive_method_used"]), train_df["Contraceptive_method_used"]
+    #X_train, y_train = train_df.drop(columns=["Contraceptive_method_used"]), train_df["Contraceptive_method_used"]
 
     #splitting into X_test and y_test
     X_test, y_test = test_df.drop(columns=["Contraceptive_method_used"]), test_df["Contraceptive_method_used"]
@@ -84,9 +86,18 @@ def main(test_path,model, output_path):
     
     roc_plot = RocCurveDisplay.from_estimator(final_svc_model, X_test, y_test)
     plt.savefig(output_path + "roc_curve.png")
-
-
-
+    
+    perm_importance = permutation_importance(final_svc_model, X_test, y_test)
+    feature_names = X_test.columns
+    features = np.array(feature_names)
+    plt.figure(figsize= (15,10))
+    sorted_idx = perm_importance.importances_mean.argsort()
+    plt.barh(features[sorted_idx], perm_importance.importances_mean[sorted_idx])
+    plt.yticks(fontsize=8)
+    plt.xlabel("Permutation Importance")
+    plt.savefig(output_path + "feature_imp.png")
+    
+    
 if __name__ == "__main__":
     main(opt["--test_path"], opt["--model"],opt["--output_path"])
 
