@@ -1,3 +1,5 @@
 # Introduction
 
+
 In this project we are trying to answer the question: given the the demographic and socio-economic status: are we able to predict whether a person is using a contraceptive method or not ? Answering this question is important because of the adverse side effects contraceptives can have on a person's health based on the usage. Furthermore, it also gives us an understanding of the factors that could have contributed to the reasons behind why the contraceptive market is such a big industry in the health care sector right now. Here we approach this problem by using machine learning algorithm to predict whether a person prefers to use contraceptive method  or not given the women's demographic and socio-economic status.
+

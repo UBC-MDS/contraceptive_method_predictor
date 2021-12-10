@@ -18,6 +18,10 @@ After selecting our final model, we will refit the model on the complete trainin
 
 An initial exploratory data analysis performed as a part of the release v0.0.1 can be found [here](https://github.com/UBC-MDS/contraceptive_method_predictor/blob/main/src/eda.ipynb).
 
+The workflow and code implementation was perfomed as a part of the release v0.1.0 can be found [here](https://github.com/UBC-MDS/contraceptive_method_predictor/releases/tag/v0.1.0).
+
+The final report for the project can be found at https://github.com/UBC-MDS/contraceptive_method_predictor/blob/main/doc/contraceptive_method_predictor_report.md
+
 ## Data Analysis Workflow
 
 In this project, we created 6 scripts to run our data analysis. As illustrated in the figure below.
@@ -33,6 +37,7 @@ In this project, we created 6 scripts to run our data analysis. As illustrated i
 
 ## Usage
 
+<<<<<<< HEAD
 To replicate the analysis, clone this GitHub repository, install the dependencies listed below, and run the following command at the command line / terminal from the root directory of this project:
 
     # for first time installation
@@ -58,6 +63,29 @@ To replicate the analysis, clone this GitHub repository, install the dependencie
 
     # render final report
     Rscript -e "rmarkdown::render('doc/contraceptive_method_predictor_report.Rmd', output_format = 'github_document')"
+
+
+To replicate the analysis, clone this GitHub repository, install the dependencies listed below, and run the following command at the command line / terminal from the root directory of this project.
+
+Install all the dependencies listed under the "Dependencies" header. To create and activate the environment, run the following commands in the command line from the root directory of this project:
+
+```shell
+conda env create --file env-cmp.yaml
+conda activate cmp
+```
+
+Once dependencies are installed, run the following command at the command line from the root directory of this project:
+
+```shell
+make all
+```
+
+To reset the repo to a clean state, with no intermediate or results files, run the following command at the command line from the root directory of this project:
+
+```shell
+make clean
+```
+>>>>>>> bb85d9b7ecf1e6b6317eb6df1e99e43a239376f7
 
 ## Initial EDA
 
