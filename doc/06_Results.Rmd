@@ -21,9 +21,9 @@ knitr::include_graphics("../results/cm.png")
 
 ```
 
-By looking at the confusion matrix, it can be observed that the model is predicting well on the total number of `True positives` i.e 231 and `True Negatives` i.e 97 . However, there are some false +ve and -ve observed as well.  
+We have considered the use of contraceptive method as positive calss.By looking at the confusion matrix, it can be observed that the model is predicting well on the total number of `True positives` i.e 231  which are the ones that the model predicted correctly to be using contraceptive method.and `True Negatives` i.e 97 which denotes correctly for not using contraceptive method. However, there are some false +ve and -ve observed as well.  
 
-`False positives` are indicated when we affirmatively predict the usage of contraceptives when in fact, the person does not use contraceptives i.e in our matrix 87 .
+`False positives` are indicated when we affirmatively predict the usage of contraceptives when in fact, the person does not use contraceptives i.e in our matrix 87 .and `False Negatives` indicated when we incorrectly predict the person is not using, when they are actually using.
 
 ## Scoring Metric:
 
@@ -37,7 +37,8 @@ knitr::kable(cl_report, caption = "Scoring Metrics")
 
 ## Precision-Recall Curve:
 
-The precision and recall tradeoff of our model could be observed by plotting the PR curve with the mean Average Precision score. A good enough AP score of 0.79 could be observed from the figure \@ref(fig:precrec).
+The precision and recall tradeoff of our model could be observed by plotting the PR curve with the mean Average Precision score.A theshold of $0.5$ was used to make the plots. A good enough AP score of 0.79 could be observed from the figure \@ref(fig:precrec).
+
 
 ```{r precrec, echo=FALSE, fig.cap="Precision vs Recall Curve", out.width = '50%'}
 knitr::include_graphics("../results/pr_curve.png")
@@ -45,14 +46,23 @@ knitr::include_graphics("../results/pr_curve.png")
 
 ## ROC Curve
 
-In order to obtain an overall score for our model, the Area under the curve was observed which resulted in a decent score of 78% from the figure \@ref(fig:roccurve).
+As mentioned above, the curves were plotted at a threshold of $0.5$. In order to obtain an overall score for our model, the Area under the curve was observed which resulted in a decent score of 78% from the figure \@ref(fig:roccurve).
 
 ```{r roccurve, echo=FALSE, fig.cap="AUC ROC Curve", out.width = '100%'}
 knitr::include_graphics("../results/roc_curve.png")
 ```
+## Feature Importance
+
+We have predicted the co-efficients/ weights of each features and found that the features Number_of_children_ever_born, wife_age, wife_education are considered to be top three features of importance.
+
+```{r feature_imp, echo=FALSE, fig.cap="Feature Importances", out.width='100%'}
+knitr::include_graphics("../results/feature_imp.png")
+```
+The other features like standard_of_living_index, Husband_ocuupation, wife_religion, Husband_education also seem to pay a significant role. Media_exposure, surprisingly seem to not play any importance, but it may be due to bias in the methods involved in data collection.
 
 # Final Conclusion
 
-The intent of the process was to predict the use of contraceptives in women based on socio-economic and education levels. In the process, 4 different models were tried. It can be observed from the above parameters that the chosen model is indeed performing well with an accuracy of $74\%$ , `recall` of $90\%$, `precision` of $73\%$ , `f1_score` of $80\%$ and `AUC` $78\%$. These results are in line with the validation scores outlined previously. The high `recall value` of $90\%$ indicates that `False Negatives` are very low. 
+The intent of the process was to predict the use of contraceptives in women based on socio-economic and education levels. In the process, 4 different models were tried. It can be observed from the above parameters that the chosen model is indeed performing well with an accuracy of $74\%$ , `recall` of $90\%$, `precision` of $73\%$ , `f1_score` of $80\%$ and `AUC` $78\%$. The precision indicates, that out of all predicted positives,how many are actually postive, ie. out of 100 predicted positve samples, 73 were actually using the contraceptives. Recall indicates, out of total positives how many are predicted positive A high recall shows that our model could identify most of them correctly.
+These results are in line with the validation scores outlined previously. The high `recall value` of $90\%$  also indicates that `False Negatives` are very low and an appreciable f1_score of 0.8.
 
 However, it could be also be observed that there are indeed cases where the model is not predicting correctly, and hence there is scope for improvement before the model is deployed in a real world scenario.
