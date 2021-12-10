@@ -40,22 +40,22 @@ To replicate the analysis, clone this GitHub repository, install the dependencie
      
     # activate virtual environment
     conda activate cmp
-    
+
     # download data
     python src/download_data.py --url=https://archive.ics.uci.edu/ml/machine-learning-databases/cmc/cmc.data --out_file=data/raw/contraceptive.csv
-    
+
     # split into train & test
-	python src/split_data.py --path=data/raw/contraceptive.csv --out_file=data/processed/
-    
+    python src/split_data.py --path=data/raw/contraceptive.csv --out_file=data/processed/
+
     # create EDA figure and write to file
     python src/eda.py --train_dir=data/processed/train.csv --out_dir=./results
-    
+
     # pre-process data and train model
     python src/preprocess_model_selection.py --path="../data/processed/train.csv" --score_file="../results/val_score_results.csv" --model_path=results/models/final_svc.pkl
-    
+
     # test model
     python src/predict.py --test_path="../data/processed/test.csv" --model="../results/models/final_svc.pkl" --output_path="../results/"
-    
+
     # render final report
     Rscript -e "rmarkdown::render('doc/contraceptive_method_predictor_report.Rmd', output_format = 'github_document')"
 
@@ -69,6 +69,10 @@ At this initial stage we have done an EDA of the dataset and have found that
 -   Women have high level of education, Husbands too have high level of education.
 -   Most of women are not working
 -   Women have high standard of living albeit with no media exposure
+
+## Makefile2graph
+
+![Figure. Makefile](diagram.png)
 
 ## Dependencies
 
