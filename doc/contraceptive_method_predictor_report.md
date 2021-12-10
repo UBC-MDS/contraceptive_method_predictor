@@ -287,7 +287,13 @@ figure @ref(fig:roccurve).
 
 <img src="../results/roc_curve.png" title="AUC ROC Curve" alt="AUC ROC Curve" width="100%" />
 
+
+
+
+# Final Conclusion
+=======
 ## 7.5 Final Conclusion
+
 
 The intent of the process was to predict the use of contraceptives in
 women based on socio-economic and education levels. In the process, 4
