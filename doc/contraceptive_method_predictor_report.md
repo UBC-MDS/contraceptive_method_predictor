@@ -251,6 +251,8 @@ under the curve which gives us a decent score of 78% from the figure
 
 <img src="../results/roc_curve.png" title="AUC ROC Curve" alt="AUC ROC Curve" width="100%" />
 
+
+
 # Final Conclusion
 
 We have tried 4 different models, the intent was to predict the use of
