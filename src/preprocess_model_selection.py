@@ -168,6 +168,18 @@ def main(path, out_file, model_path):
     # Reading the data
     train_df = pd.read_csv(path)
     
+     try:
+        if path is None:
+            raise TypeError("Argument input_train_file can't be None")
+        if out_file is None:
+            raise TypeError("Argument input_test_file can't be None")
+        if model_path is None:
+            raise TypeError("Argument input_model_file can't be None")
+    except Exception as e:
+        print(e)
+        sys.exit(1)
+
+
     # Splitting between Features & Tar
     X_train, y_train = train_df.drop(columns=["Contraceptive_method_used"]), train_df["Contraceptive_method_used"]
 
