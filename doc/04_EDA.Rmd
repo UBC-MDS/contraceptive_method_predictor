@@ -1,3 +1,4 @@
+
 # Exploratory Data Analysis (EDA)
 
 ## Summary of the training dataset
@@ -50,3 +51,4 @@ From the figure \@ref(fig:countCatByTarget), it can be observed that most of the
 
 ```{r countCatByTarget, echo=FALSE, fig.cap="Counting Combinations of all categorical features by the target class", out.width = '100%'}
 knitr::include_graphics("../results/counts_categorical_by_target.png")
+```
