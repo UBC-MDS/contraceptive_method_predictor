@@ -96,7 +96,7 @@ At this initial stage we have done an EDA of the dataset and have found that
 ## Dependencies
   - Python 3.9.5 and Python packages:
     - For details, please refer to `env-cmp.yaml`.
-  - R 4.0.3 and R libraries:
+  - R 4.1.1 and R libraries:
     - knitr==1.33
 
 ## License
