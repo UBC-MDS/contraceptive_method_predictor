@@ -1,7 +1,7 @@
 ---
 title: "Contraceptive Method Predictor Report"
 author: "Christopher Alexander, Yik Hong Chan, Abhiket Gaurav, Valli A"
-date: "2021-11-26 (updated: `r Sys.Date()`)"
+date: "updated: `r Sys.Date()`"
 always_allow_html: true
 output: 
   bookdown::html_document2:

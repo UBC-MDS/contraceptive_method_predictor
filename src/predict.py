@@ -1,4 +1,4 @@
-# author : Valli Akella
+# author : Christopher Alexander, Harry Chan, Abhiket Gaurav,Valli A
 # date: 2021-11-25
 
 """This code predicts the contraceptive method used based on the model derived from a pickle file and generates PR curve, Roc

@@ -1,9 +1,8 @@
 # Summary
 
-
 Here we attempt to build a classification model using the SVC classifier algorithm which can help predict the use/or no use contraceptives by women based on their demographic and socio-economic characteristics. The target which was originally of 3 classes has been modified to 2 classes with target `1` defining usage of contraceptive (including short term and long term) and `0` defining no usage of contraceptive for simplicity and practical reasons.
 
-Our model performed fairly well on unseen data , with an overall accuracy of ~ 74% and the area under the curve (AUC) is of 78%. However the model still has a few false predictions for the non usage of contraceptive. These cases where false positives, that is predicting the usage of contraceptive when in fact the person does not use contraceptives. These kind of predictions give wrong insights of contraceptive usage, thus we feel further work to improve model prediction is needed before we could put this model in the real world.
+The overall accuracy of the model is  ~ 74% and the area under the curve (AUC) is of 78%.Given that the data-set was limited this seems to be a decent score. However the model still has a few false predictions for the non usage of contraceptive. These cases where false positives, that is predicting the usage of contraceptive when in fact the person does not use contraceptives. These kind of predictions give wrong insights of contraceptive usage, thus we feel further work to improve model prediction is needed before we could put this model in the real world.
 
 Demographic Details of the location in use:
 
@@ -12,13 +11,14 @@ The data used in our project is a subset of 1987 National Indonesia Contraceptiv
 Inclusion of Wife's religion Feature:
 
 We have not dropped the wife's religion feature while building our model to predict owing to the following reasons:
-1) The country of data collection is Indonesia, which has 90% of the population following one particular religion. Because our project includes analysis of a population based on socio-economic and demographic parameters, not including religion in this dataset would render it incomplete and could also lead to skewed analysis of data. Therefore we believe , purely in the interest of objectivity that not including religion as a feature based on some non objective reason would be unscientifically unethical and irresponsible.
+
+1) The country of data collection is Indonesia, which has 90% of the population following one particular religion. Because our project includes analysis of a population based on socio-economic and demographic parameters, not including religion in this data-set would render it incomplete and could also lead to skewed analysis of data. Therefore we believe , purely in the interest of objectivity that not including religion as a feature based on some non objective reason would be unscientifically unethical and irresponsible.
 
 2) Also, our data has only 9 features and dropping one of them would not help us get proper results.
 
-3) The difference in the training and the test scores is not much, hence we can say that our model is not overfitting and hence, mathematically also, we see no need to drop the feature
-
+3) The difference in the training and the test scores is not much, hence we can say that our model is not over-fitting and hence, mathematically also, we see no need to drop the feature
 
 
 Disclaimer*
+
 Inclusion of the wife's religion feature is intended purely for objective scientific analysis.
