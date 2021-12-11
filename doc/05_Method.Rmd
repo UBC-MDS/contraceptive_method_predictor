@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 output:
   html_document: default
@@ -52,68 +51,7 @@ Given the performance of RBF SVC was the best, it was chosen for hyper-parameter
 
 It can be observed that the best parameters are: `C = 10.0`, `gamma = 0.01`.
 
-
 ```{r hyperparam, echo=FALSE}
 hyperparameter <- read.csv("../results/Random_Search_results.csv") 
 kable(hyperparameter, caption="Hyperparameter Selection")
 ```
-=======
----
-output:
-  html_document: default
-  pdf_document: default
----
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-library(tidyverse)
-library(knitr)
-```
-
-# Pre-Processing & Model Selection 
-
-## Data Pre-Processing
-
-Based on the EDA (Exploratory Data Analysis) performed earlier and variable descriptions, it can be inferred that there are no missing values. However, the variables were of different data types. In order to perform operations on data, we need to ensure consistency of data types. The following table shows different variables in the data-set and the respective transformation performed on each of them.
-
-| Data Type | Variable                                      | Transformation performed | Technique used   |
-|-----------|-----------------------------------------------|--------------------------|------------------|
-| Numerical | Wife's age, Number of children ever born      | Scaling                  | Standard Scaling |
-| Ordinal   | Wife's education, Husband Education,          | Encoding                 | Ordinal Encoding |
-| Ordinal   | Husband's Occupation,Standard of living Index | Encoding                 | Ordinal Encoding |
-| Binary    | Wife's religion, Wife working Media Exposure  | None                     | Pass through     |
-
-
-For simplicity and better model performance. We have combined `2 = Long-term`, `3 = Short-term` into one class and it was given a value of `1`. The label `1 = No-use` was given a value of `0`, because our aim is to predict the use(long or short)/ no use of contraceptives .
-
-Our target distribution now have 
-* `0 = No-use` : **445** observations, 
-* `1 = use` : **586** observations.
-
-# Finding the best Model:
-With this data, our problem statement now turns into binary classification problem. We have tried the following predictive models:
-
-1. Decision Tree
-2. kNN
-3. Logistic Regression
-4. RBF SVC
-
-## Results of Cross Validation
-From the table \@ref(tab:crossVal), it can be clearly inferred that the RBF SVC algorithm is giving us the best score on both training and cross val data-set. The metric used to evaluate the cross validation was **accuracy**.
-
-
-```{r crossVal, echo=FALSE }
-cross_val <- read.csv("../results/val_score_results.csv") 
-kable(cross_val, caption="Cross Validation Result (Score for Accuracy)")
-```
-
-## Hyper-Parameter Optimization
-Given the performance of RBF SVC was the best, it was chosen for hyper-parameter tuning. The results of the top 5 models are shown in \@ref(tab:hyperparam). 
-
-It can be observed that the best parameters are: `C = 10.0`, `gamma = 0.01`.
-
-
-```{r hyperparam, echo=FALSE}
-hyperparameter <- read.csv("../results/Random_Search_results.csv") 
-kable(hyperparameter, caption="Hyperparameter Selection")
-```
->>>>>>> b61908b3d843b7540d4c3d165b6e8ee2fa6f0424

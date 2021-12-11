@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Exploratory Data Analysis (EDA)
 
 ## Summary of the training dataset
@@ -51,58 +50,3 @@ From the figure \@ref(fig:countCatByTarget), it can be observed that most of the
 
 ```{r countCatByTarget, echo=FALSE, fig.cap="Counting Combinations of all categorical features by the target class", out.width = '100%'}
 knitr::include_graphics("../results/counts_categorical_by_target.png")
-=======
-# Exploratory Data Analysis (EDA)
-
-## Summary of the training dataset
-First, it is important to identify and understand the attributes of the data-set. Exploratory data analysis was performed on the training data-set and was found to have no missing values. The attributes of the training data-set are outlined below
-
-| Column name                  | Description                                  | Type       | Values                              |
-| ---------------------------- | ------------------------------------------- | ----------- |  ---------------------------------- |
-| Wife age                     | Wife's age                                  | Numerical   | any positive values                 |
-| Wife education               | Wife's education                            | Categorical | 1=low, 2, 3, 4=high                 |
-| Husband education            | Husband's education                         | Categorical | 1=low, 2, 3, 4=high                 |
-| Number of children ever born | Number of children ever born                | Numerical   | any positive values                 |
-| Wife religion                | Wife's religion                             | Binary      | 0=Non-Islam, 1=Islam                |
-| Wife now working?            | Is wife working or not                      | Binary      | 0=Yes, 1=No                         |
-| Husband occupation           | Husband's occupation                        | Categorical | 1, 2, 3, 4                          |
-| Standard-of-living index     | Standard-of-living Index                    | Categorical | 1=low, 2, 3, 4=high                 |
-| Media Exposure               | Media exposure                              | Binary      | 0=Good, 1=Not good                  |
-| Contraceptive method used    | Contraceptive method used (Class Attribute) | Categorical | 1=No-use, 2=Long-term, 3=Short-term |
-
-```{python, include=TRUE}
-import pandas as pd
-train_df = pd.read_csv(
-    "../data/processed/train.csv"
-)
-train_df.info()
-```
-
-## Distribution of target class
-From the histogram \@ref(fig:histTarget) it can be observed that there are three classes - with 1 ("No-use"), 2 ("Long-term use"), followed by 3 ("Short-term use"). We have combined 2 and 3 as "use" case and have left 1 as it is ("no-use" case). With this modification we are trying to predict the "use vs no use" of contraceptives.
-
-```{r histTarget, echo=FALSE, fig.cap="Histogram of the Contraceptive Method used (target class)", out.width = '50%'}
-knitr::include_graphics("../results/histogram_target.png")
-```
-
-## Histogram of all numerical features
-From the distributions in the histogram \@ref(fig:histNum), it can be observed that the data is skewed to the right. This can be attributed to significantly higher numbers of married woman who are between 28 to 38 years old than those with ages higher than 38 years, and that most of the woman have two to three kids on average. 
-
-```{r histNum, echo=FALSE, fig.cap="Histogram of all numerical features", out.width = '100%'}
-knitr::include_graphics("../results/histogram_numerical.png")
-```
-
-## Histogram of all non-numerical features
-From the histogram \@ref(fig:countCat), it can be observed that a majority of the responses / observations in the survey are from women having high levels of education, religious beliefs, with educated partners and with a high standard of living. 
-
-```{r countCat, echo=FALSE, fig.cap="Histogram of all non-numeric features", out.width = '100%'}
-knitr::include_graphics("../results/histogram_categorical.png")
-```
-
-## Relation betweeen target and non-numerical features
-From the figure \@ref(fig:countCatByTarget), it can be observed that most of the observations of target class 1 (no contraception) rest on certain categorical values. However, as we had earlier pointed out the imbalance in the distribution of class values, we cannot imply correlation. 
-
-```{r countCatByTarget, echo=FALSE, fig.cap="Counting Combinations of all categorical features by the target class", out.width = '100%'}
-knitr::include_graphics("../results/counts_categorical_by_target.png")
->>>>>>> b61908b3d843b7540d4c3d165b6e8ee2fa6f0424
-```
