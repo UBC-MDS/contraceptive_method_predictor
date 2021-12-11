@@ -1,4 +1,4 @@
-# author: Christopher Alexander
+# author: Christopher Alexander, Harry Chan, Abhiket Gaurav,Valli A
 # date: 2021-11-25
 
 """Reads data csv data from path and stores partitioned data to a local filepath as a csv.

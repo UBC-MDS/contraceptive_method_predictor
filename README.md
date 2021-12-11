@@ -6,7 +6,7 @@ A data analysis project to predict the contraceptive method choice of a woman ba
 
 ## About
 
-In this project we are trying to answer the question: given the the demographic and socio-economic status are we able to predict the contraceptive method preferred by the individual? Answering this question is important because of the adverse effects contraceptive's can have on a person's health based on the usage. Furthermore, it also gives us an understanding of the factors that could have contributed to the reasons behind why the contraceptive market is such a big industry in the health care sector right now.
+In this project we are trying to answer the question: given the the demographic and socio-economic status of a married woman in Indonesia, are we able to predict the use of contraceptive(no use/use)? Answering this question is important because of the adverse effects contraceptive's can have on a woman's health. Furthermore, it also gives us an understanding of the factors that could have contributed to the reasons behind why the contraceptive market is such a big industry in the health care sector right now.
 
 The data set used in this project is a subset of the 1987 National Indonesia Contraceptive Prevalence Survey created by Tjen-Sien Lim. It was sourced from UCI Machine Learning Repository and can be found [here](http://archive.ics.uci.edu/ml/datasets/Contraceptive+Method+Choice). Each row in the dataset represents the demographics and social economic status of a woman in Indonesia (e.g., Age, Education, Religion, Standard of living index,etc.).
 
@@ -96,6 +96,7 @@ At this initial stage we have done an EDA of the dataset and have found that
 ## Dependencies
 
 We use Python 3.7.3 and Python packages for analysis. For details, please refer to `env-cmp.yaml`.
+R dependencies: knitr and kable
 
 ## License
 

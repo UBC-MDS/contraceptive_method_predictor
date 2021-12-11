@@ -1,4 +1,4 @@
-# author: Abhiket Gaurav, Christopher Alexander
+# author: Christopher Alexander, Harry Chan, Abhiket Gaurav, Valli A
 # date: 2021-11-25
 
 """Reads train csv data from path, preprocess the data, build a Model, gives the cross validation output"
@@ -163,9 +163,6 @@ def hyperparameter_tuning(preprocessor, X_train, y_train):
     print("Best hyperparameter values: ", random_search.best_params_)
     print("Best score: %0.3f" % (random_search.best_score_))
     return random_search.best_estimator_, random_search.best_params_, top5_models_df
-    
-
-
 
 def main(path, out_file, model_path):
     # Reading the data
@@ -209,7 +206,16 @@ def main(path, out_file, model_path):
         pickle.dump(best_params, open(str(directory)+"/final_params.pkl","wb"))
         rcv_results.to_csv(str(os.path.dirname(out_file))+"/Random_Search_results.csv")
 
-    
+    try:
+        if opt['X_train'] is None:
+            raise TypeError("Argument input_train_file can't be None")
+        if opt['y_test'] is None:
+            raise TypeError("Argument input_test_file can't be None")
+        if opt['best_model'] is None:
+            raise TypeError("Argument input_model_file can't be None")
+    except Exception as e:
+        print(e)
+        sys.exit(1)
 
 if __name__ == "__main__":
     main(opt["--path"], opt["--score_file"],opt["--model_path"])

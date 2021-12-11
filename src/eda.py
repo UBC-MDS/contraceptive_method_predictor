@@ -1,4 +1,4 @@
-# author: Harry Chan
+# author: Christopher Alexander, Harry Chan, Abhiket Gaurav,Valli A
 # date: 2021-11-24
 
 """Create eda plots for the provided training data file. Saves the plots as png files in the provided output directory.
