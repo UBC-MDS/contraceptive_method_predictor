@@ -168,7 +168,7 @@ def main(path, out_file, model_path):
     # Reading the data
     train_df = pd.read_csv(path)
     
-     try:
+    try:
         if path is None:
             raise TypeError("Argument input_train_file can't be None")
         if out_file is None:
