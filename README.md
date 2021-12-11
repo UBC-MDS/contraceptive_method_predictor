@@ -94,9 +94,10 @@ At this initial stage we have done an EDA of the dataset and have found that
 ![Figure. Makefile](diagram.png)
 
 ## Dependencies
-
-We use Python 3.7.3 and Python packages for analysis. For details, please refer to `env-cmp.yaml`.
-R dependencies: knitr and kable
+  - Python 3.9.5 and Python packages:
+    - For details, please refer to `env-cmp.yaml`.
+  - R 4.0.3 and R libraries:
+    - knitr==1.33
 
 ## License
 
