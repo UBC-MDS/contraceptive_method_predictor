@@ -13,17 +13,17 @@ library(knitr)
 
 ## Data Pre-Processing
 
-Based on the EDA (Exploratory Data Analysis) performed earlier and variable descriptions, it can be inferred that there are no missing values. However, the variables were of different data types. In order to perform operations on data, we need to ensure consistency of data types. The following table shows different variables in the dataset and the respective transformation performed on each of them.
+Based on the EDA (Exploratory Data Analysis) performed earlier and variable descriptions, it can be inferred that there are no missing values. However, the variables were of different data types. In order to perform operations on data, we need to ensure consistency of data types. The following table shows different variables in the data-set and the respective transformation performed on each of them.
 
-| Data Type | Variable                                     | Transformation performed | Technique used       |
-|-----------|-----------------------------------------------|----------------|------------------|
-| Numerical | Wife's age, Number of children ever born      | Scaling        | Standard Scaling |
-| Ordinal   | Wife's education, Husband Education,          | Encoding       | Ordinal Encoding |
-|           | Husband's Occupation,Standard of living Index |                |                  |
-| Binary    | Wife's religion, Wife working Media Exposure  | None           | Pass through     |
+| Data Type | Variable                                      | Transformation performed | Technique used   |
+|-----------|-----------------------------------------------|--------------------------|------------------|
+| Numerical | Wife's age, Number of children ever born      | Scaling                  | Standard Scaling |
+| Ordinal   | Wife's education, Husband Education,          | Encoding                 | Ordinal Encoding |
+| Ordinal   | Husband's Occupation,Standard of living Index | Encoding                 | Ordinal Encoding |
+| Binary    | Wife's religion, Wife working Media Exposure  | None                     | Pass through     |
 
 
-For simplicity and better model performance. We have combined `2 = Long-term`, `3 = Short-term` into one class and it was given a value of `1`. And the label `1 = No-use` was given a value of `0`, because our aim is to predict the use(long or short)/ no use of contraceptives .
+For simplicity and better model performance. We have combined `2 = Long-term`, `3 = Short-term` into one class and it was given a value of `1`. The label `1 = No-use` was given a value of `0`, because our aim is to predict the use(long or short)/ no use of contraceptives .
 
 Our target distribution now have 
 * `0 = No-use` : **445** observations, 
@@ -38,7 +38,7 @@ With this data, our problem statement now turns into binary classification probl
 4. RBF SVC
 
 ## Results of Cross Validation
-From the table \@ref(tab:crossVal), it can be clearly inferred that the RBF SVC algorithm is giving us the best score on both training and cross val dataset. The metric used to evaluate the cross validation was **accuracy**.
+From the table \@ref(tab:crossVal), it can be clearly inferred that the RBF SVC algorithm is giving us the best score on both training and cross val data-set. The metric used to evaluate the cross validation was **accuracy**.
 
 
 ```{r crossVal, echo=FALSE }
