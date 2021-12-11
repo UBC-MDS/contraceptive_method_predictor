@@ -6,3 +6,4 @@
 .Rhistory
 runall.sh
 .virtual_documents
+geckodriver.log

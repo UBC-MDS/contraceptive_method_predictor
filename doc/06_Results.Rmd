@@ -51,7 +51,7 @@ knitr::include_graphics("../results/roc_curve.png")
 
 We have predicted the co-efficients/ weights of each features and found that the features Number_of_children_ever_born, wife_age, wife_education are considered to be top three features of importance.
 
-```{r feature_imp, echo=FALSE, fig.cap="Feature Importances", out.width='100%'}
+```{r featureimp, echo=FALSE, fig.cap="Feature Importances", out.width='100%'}
 knitr::include_graphics("../results/feature_imp.png")
 ```
 The other features like standard_of_living_index, Husband_occupation, wife_religion, Husband_education also seem to pay a significant role. Media_exposure, surprisingly seem to not play any importance, but it may be due to bias in the methods involved in data collection.Also as we can saw in the EDA part, features like standard of living, Husband's education  were coming as prominent ones. 
