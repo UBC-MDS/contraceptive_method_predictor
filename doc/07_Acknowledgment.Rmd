@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 # Acknowledgment
 
 This data-set is a subset of the 1987 National Indonesia Contraceptive Prevalence Survey [@lls-cpacttt-00]. It was sourced from the UCI Machine Learning Repository [@Dua:2019].
 
 The Python programming languages [@van1995python] and the following Python packages were used to perform the analysis: altair [@vanderplas2018altair], docopt [@docopt], matplotlib [@hunter2007matplotlib], numpy [@2020NumPy-Array], pandas [@mckinney2010data], sckit-learn [@pedregosa2011scikit]. The code used to perform the analysis and create this report can be found [here](https://github.com/UBC-MDS/contraceptive_method_predictor/tree/main/src).
+=======
+# Acknowledgment
+
+This data-set is a subset of the 1987 National Indonesia Contraceptive Prevalence Survey [@lls-cpacttt-00]. It was sourced from the UCI Machine Learning Repository [@Dua:2019].
+
+The Python programming languages [@van1995python] and the following Python packages were used to perform the analysis: altair [@vanderplas2018altair], docopt [@docopt], matplotlib [@hunter2007matplotlib], numpy [@2020NumPy-Array], pandas [@mckinney2010data], sckit-learn [@pedregosa2011scikit]. The code used to perform the analysis and create this report can be found [here](https://github.com/UBC-MDS/contraceptive_method_predictor/tree/main/src).
+>>>>>>> b61908b3d843b7540d4c3d165b6e8ee2fa6f0424

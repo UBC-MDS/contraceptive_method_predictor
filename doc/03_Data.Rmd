@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 # Data
 
 This dataset is a subset of the 1987 National Indonesia Contraceptive Prevalence Survey [@lls-cpacttt-00]. It was sourced from the UCI Machine Learning Repository [@Dua:2019] and can be found [here](https://archive.ics.uci.edu/ml/datasets/Contraceptive+Method+Choice). The samples are of married women who were either not pregnant or do not know if they were at the time of interview. Each row in the data set represents the sample taken from women, including their demographic information and their socio-economic status.
 
+=======
+# Data
+
+This dataset is a subset of the 1987 National Indonesia Contraceptive Prevalence Survey [@lls-cpacttt-00]. It was sourced from the UCI Machine Learning Repository [@Dua:2019] and can be found [here](https://archive.ics.uci.edu/ml/datasets/Contraceptive+Method+Choice). The samples are married women who were either not pregnant or do not know if they were at the time of interview. Each row in the data set represents the sample taken from women, including their demographic information and their socio-economic status.
+
+>>>>>>> b61908b3d843b7540d4c3d165b6e8ee2fa6f0424
