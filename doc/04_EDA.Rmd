@@ -1,7 +1,7 @@
 # Exploratory Data Analysis (EDA)
 
 ## Summary of the training dataset
-First, it is important to identify and understand the attributes of the dataset. Exploratory data analysis was performed on the training dataset and was found to have no missing values. The attributes of the training dataset are outlined below
+First, it is important to identify and understand the attributes of the data-set. Exploratory data analysis was performed on the training data-set and was found to have no missing values. The attributes of the training data-set are outlined below
 
 | Column name                  | Description                                  | Type       | Values                              |
 | ---------------------------- | ------------------------------------------- | ----------- |  ---------------------------------- |
@@ -32,7 +32,7 @@ knitr::include_graphics("../results/histogram_target.png")
 ```
 
 ## Histogram of all numerical features
-From the distributions in the histogram \@ref(fig:histNum), it can be observed that the data is skewed to the right. This can be attributed to significantly higher numbers of wives who are between 28 to 38 years old than those with ages higher than 38 years, and that most of the wives have two to three kids on average. 
+From the distributions in the histogram \@ref(fig:histNum), it can be observed that the data is skewed to the right. This can be attributed to significantly higher numbers of married woman who are between 28 to 38 years old than those with ages higher than 38 years, and that most of the woman have two to three kids on average. 
 
 ```{r histNum, echo=FALSE, fig.cap="Histogram of all numerical features", out.width = '100%'}
 knitr::include_graphics("../results/histogram_numerical.png")
